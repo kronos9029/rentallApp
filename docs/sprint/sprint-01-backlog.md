@@ -22,7 +22,8 @@ Total SP: 35
 4. Implement DB migration cho users, roles, courts, time_buckets, court_buckets, pricing_rules.
 5. Seed 9 courts va bo pricing/cancellation baseline cho local environment.
 6. Add secure baseline: validation, CSRF, secure cookies, secure headers middleware.
-7. Add CI pipeline + lint + unit test baseline.
+7. Add sensitive config baseline: encrypted config bootstrap + AES key inject qua environment variable runtime.
+8. Add CI pipeline + lint + unit test baseline.
 
 ## Acceptance Criteria
 - Customer co the register/login/reset password.
@@ -31,3 +32,4 @@ Total SP: 35
 - 9 courts va default pricing rules seed thanh cong.
 - Price calculation baseline tra dung gia cho private/shared va weekday/weekend cases.
 - Security baseline middleware active.
+- Sensitive config khong nam o plaintext config cho production-like flow; encrypted config bootstrap va AES runtime key convention da duoc thiet lap.
