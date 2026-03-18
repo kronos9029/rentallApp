@@ -127,6 +127,10 @@ Nguyen tac:
   - `Database:MySql:Database`
   - `Database:MySql:User`
   - `Database:MySql:Password`
+- voi email config, encrypt:
+  - `Email:Smtp:Username`
+  - `Email:Smtp:Password`
+  - `Email:Smtp:FromAddress`
 
 ### 7.1. Tao AES key
 
@@ -214,16 +218,16 @@ Vi du trong [appsettings.Development.json](D:/rentalApp/src/RentalApp.Web/appset
 {
   "Email": {
     "Smtp": {
-      "Username": "your-gmail@gmail.com",
-      "Password": "enc::BASE64_PAYLOAD_HERE",
-      "FromAddress": "your-gmail@gmail.com",
+      "Username": "enc::BASE64_ENCRYPTED_SMTP_USERNAME",
+      "Password": "enc::BASE64_ENCRYPTED_SMTP_PASSWORD",
+      "FromAddress": "enc::BASE64_ENCRYPTED_FROM_ADDRESS",
       "FromDisplayName": "RentalApp Development"
     }
   }
 }
 ```
 
-Vi du cho DB config trong `Staging` hoac `Production`:
+Vi du cho `Staging` hoac `Production`:
 
 ```json
 {
@@ -238,6 +242,14 @@ Vi du cho DB config trong `Staging` hoac `Production`:
       "AllowPublicKeyRetrieval": true,
       "SslMode": "Preferred"
     }
+  },
+  "Email": {
+    "Smtp": {
+      "Username": "enc::BASE64_ENCRYPTED_SMTP_USERNAME",
+      "Password": "enc::BASE64_ENCRYPTED_SMTP_PASSWORD",
+      "FromAddress": "enc::BASE64_ENCRYPTED_FROM_ADDRESS",
+      "FromDisplayName": "RentalApp Staging"
+    }
   }
 }
 ```
@@ -247,7 +259,9 @@ Ban co the ap dung cach nay cho:
 - `Database:MySql:Database`
 - `Database:MySql:User`
 - `Database:MySql:Password`
+- `Email:Smtp:Username`
 - `Email:Smtp:Password`
+- `Email:Smtp:FromAddress`
 - API keys
 - webhook secrets
 
@@ -257,6 +271,7 @@ Luu y:
 - `Password` cua Gmail phai la `Gmail App Password`
 - `Database:MySql:Host`, `Database:MySql:Port`, `Database:MySql:SslMode` de plain text
 - `Email:Smtp:Host`, `Email:Smtp:Port`, `Email:Smtp:EnableSsl` de plain text
+- `Email:Smtp:FromDisplayName` co the de plain text
 - file `appsettings.Staging.json` va `appsettings.Production.json` da duoc tao san, ban chi can dien gia tri vao
 
 ## 8. Build va test
