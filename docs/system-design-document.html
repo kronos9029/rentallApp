@@ -1,0 +1,537 @@
+<h1 id="system-design-document-sdd">System Design Document (SDD)</h1>
+<h2 id="document-purpose-and-scope">1. Document Purpose and Scope</h2>
+<p>Tai lieu nay mo ta thiet ke he thong cho Pickleball Court Booking Web App, tong hop tu: - <code>docs/project requirement.md</code> - <code>docs/proposal.md</code> - <code>docs/user-stories-functional.md</code></p>
+<p>Pham vi: - 2 vai tro chinh: <code>Customer</code>, <code>Admin</code>. - Nghiep vu cot loi: dat san private/shared, thanh toan VNPay va bank QR, check-in bang code, huy/hoan tien, loyalty, dashboard quan tri. - He thong duoc xay dung theo ASP.NET Core MVC/Razor + API, Aurora MySQL-Compatible, worker bat dong bo.</p>
+<h2 id="business-goals-and-constraints">2. Business Goals and Constraints</h2>
+<h3 id="business-goals">2.1 Business goals</h3>
+<ul class="incremental">
+<li>Ho tro dat 9 san voi 2 kieu dat: private theo gio va shared toi da 8 slot/khung gio.</li>
+<li>Dam bao khong overbooking trong dieu kien tranh chap cao.</li>
+<li>Ho tro thanh toan online (VNPay) va chuyen khoan QR dong.</li>
+<li>Sinh ma check-in chi sau khi thanh toan thanh cong.</li>
+<li>Ho tro chinh sach huy/hoan tien theo moc 2 gio.</li>
+<li>Ho tro loyalty va dashboard bao cao cho admin.</li>
+<li>Uu tien trai nghiem nguoi dung tren mobile vi day la nhom thiet bi su dung chinh.</li>
+</ul>
+<h3 id="technical-constraints">2.2 Technical constraints</h3>
+<ul class="incremental">
+<li>Stack bat buoc: ASP.NET Core (.NET 10 LTS), Razor Pages/MVC.</li>
+<li>UI stack: Bootstrap/Tailwind cho frontend layer (Razor views/pages).</li>
+<li>UI phai mobile-first, responsive tu man hinh nho len man hinh lon (progressive enhancement).</li>
+<li>Target hieu nang mobile: toi uu payload, lazy load tai nguyen khong critical, giam blocking scripts/styles.</li>
+<li>DB: Aurora Serverless v2 (MySQL-compatible, InnoDB).</li>
+<li>Cache: in-memory cache per instance (<code>IMemoryCache</code>).</li>
+<li>Bao mat uu tien in-app (khong dung WAF), theo coding standards da chot.</li>
+<li>Secret handling: encrypted config + AES key tu environment variable runtime.</li>
+</ul>
+<h2 id="actors-and-context">3. Actors and Context</h2>
+<h3 id="actors">3.1 Actors</h3>
+<ul class="incremental">
+<li><code>Customer</code>: dang ky/dang nhap, dat san, thanh toan, xem lich su, huy booking.</li>
+<li><code>Admin</code>: quan ly san, gia, booking, hoan tien, check-in, bao cao.</li>
+<li><code>Payment Provider</code>: VNPay IPN, (tuy chon) bank QR callback.</li>
+</ul>
+<h3 id="external-systems">3.2 External systems</h3>
+<ul class="incremental">
+<li>VNPay payment gateway.</li>
+<li>Banking QR rail (VietQR/tuong duong).</li>
+<li>AWS infrastructure services (ALB, ECS/Fargate, Aurora, S3).</li>
+</ul>
+<h2 id="architectural-style-and-high-level-design">4. Architectural Style and High-Level Design</h2>
+<h3 id="overall-style">4.1 Overall style</h3>
+<ul class="incremental">
+<li>Modular monolith theo domain modules trong mot web app runtime.</li>
+<li>Tach worker cho workload bat dong bo va scheduled jobs.</li>
+<li>Kien truc event-driven noi bo de giam coupling giua transactional flow va side effects.</li>
+</ul>
+<h3 id="runtime-components">4.2 Runtime components</h3>
+<ul class="incremental">
+<li><code>Web App (MVC + Razor + API Controllers)</code>:
+<ul class="incremental">
+<li>Xu ly request UI/API.</li>
+<li>Thuc thi domain use-cases.</li>
+<li>Tich hop VNPay/BankQR.</li>
+</ul></li>
+<li><code>Background Worker</code>:
+<ul class="incremental">
+<li>Expire hold.</li>
+<li>Reconciliation thanh toan.</li>
+<li>Award loyalty, refund processing.</li>
+<li>End-of-day check-in code expiry.</li>
+</ul></li>
+<li><code>Aurora MySQL-Compatible</code>:
+<ul class="incremental">
+<li>Nguon du lieu giao dich chinh.</li>
+<li>Khoa dong + transaction consistency.</li>
+</ul></li>
+<li><code>In-memory cache</code>:
+<ul class="incremental">
+<li>Cache availability short TTL, non-critical reads.</li>
+</ul></li>
+</ul>
+<h3 id="logical-module-boundaries">4.3 Logical module boundaries</h3>
+<ul class="incremental">
+<li><code>Identity &amp; Access</code>.</li>
+<li><code>Court Availability &amp; Inventory</code>.</li>
+<li><code>Booking &amp; Hold</code>.</li>
+<li><code>Payment Integration</code>.</li>
+<li><code>Check-in</code>.</li>
+<li><code>Cancellation &amp; Refund</code>.</li>
+<li><code>Pricing</code>.</li>
+<li><code>Loyalty</code>.</li>
+<li><code>Reporting &amp; Export</code>.</li>
+<li><code>Audit &amp; Security</code>.</li>
+</ul>
+<h3 id="ui-strategy-bootstraptailwind">4.4 UI strategy (Bootstrap/Tailwind)</h3>
+<ul class="incremental">
+<li>Muc tieu: tang toc do build UI va giu consistency cho web app.</li>
+<li>Quy uoc su dung:
+<ul class="incremental">
+<li><code>Bootstrap</code>: uu tien cho form-heavy pages va admin dashboard (table, modal, form validation states).</li>
+<li><code>Tailwind</code>: uu tien cho customer-facing pages can layout linh hoat va utility-first styling.</li>
+</ul></li>
+<li>Nguyen tac ky thuat:
+<ul class="incremental">
+<li>Khong mix Bootstrap utility classes va Tailwind utility classes trong cung mot component/page.</li>
+<li>Moi page chon 1 style system chinh de tranh conflict CSS va kho maintain.</li>
+<li>Dung design tokens chung (colors, spacing, typography) de dam bao brand consistency giua 2 he thong.</li>
+<li>UI components dung lai (button, input, badge, alert, card, modal wrapper) duoc dong goi thanh partial/component rieng.</li>
+<li>Thiet ke mobile-first: default layout cho viewport nho, sau do mo rong qua breakpoints.</li>
+<li>Tap trung touch UX: target tap size &gt;= 44px, khoang cach thao tac ro rang, sticky CTA cho checkout/payment tren mobile.</li>
+<li>Form booking/payment toi uu cho mobile: input ngan gon, keyboard-friendly type, han che scroll ngang.</li>
+</ul></li>
+</ul>
+<h3 id="mobile-first-ux-priorities">4.5 Mobile-first UX priorities</h3>
+<ul class="incremental">
+<li>Luong uu tien mobile:
+<ul class="incremental">
+<li>Browse availability.</li>
+<li>Create hold.</li>
+<li>Checkout + VNPay/Bank QR payment.</li>
+<li>View booking status va check-in code.</li>
+</ul></li>
+<li>Nguyen tac UX mobile:
+<ul class="incremental">
+<li>Toi da 1 cot chinh cho customer pages.</li>
+<li>Navigation don gian, uu tien bottom/sticky actions cho luong dat san.</li>
+<li>Giam so buoc checkout va giam so field bat buoc nhap tay.</li>
+<li>Tai noi dung theo nhu cau (defer non-critical widgets/sections).</li>
+</ul></li>
+</ul>
+<h3 id="mobile-screen-acceptance-checklist">4.6 Mobile screen acceptance checklist</h3>
+<h4 id="global-checklist-ap-dung-cho-tat-ca-man-hinh-mobile">4.6.1 Global checklist (ap dung cho tat ca man hinh mobile)</h4>
+<ul class="incremental">
+<li><input type="checkbox" disabled="" />
+Ho tro viewport tu <code>320px</code> tro len, khong bi vo layout.</li>
+<li><input type="checkbox" disabled="" />
+Khong co horizontal scroll o trang thai binh thuong.</li>
+<li><input type="checkbox" disabled="" />
+Tap target quan trong (button, tab, row action) &gt;= <code>44x44px</code>.</li>
+<li><input type="checkbox" disabled="" />
+Text chinh doc duoc tren man hinh nho (khong can zoom tay).</li>
+<li><input type="checkbox" disabled="" />
+Thoi gian hien thi noi dung chinh dau tien o mang mobile o muc chap nhan duoc.</li>
+<li><input type="checkbox" disabled="" />
+Form input dung dung keyboard type (email, number) de giam loi nhap lieu.</li>
+<li><input type="checkbox" disabled="" />
+Error state hien ro rang, khong che mat CTA chinh.</li>
+<li><input type="checkbox" disabled="" />
+Secure headers/cookie/CSRF va validation van hoat dong day du tren mobile browser.</li>
+</ul>
+<h4 id="availability-screen-cus-06-cus-09">4.6.2 Availability screen (CUS-06, CUS-09)</h4>
+<ul class="incremental">
+<li><input type="checkbox" disabled="" />
+Cho phep chon ngay/khung gio bang control than thien mobile.</li>
+<li><input type="checkbox" disabled="" />
+Hien thi ro private/shared va so slot con lai (vi du <code>5/8</code>).</li>
+<li><input type="checkbox" disabled="" />
+Loading state/skeleton hien dung khi dang tai availability.</li>
+<li><input type="checkbox" disabled="" />
+Neu het cho, UI the hien disabled state ro rang.</li>
+<li><input type="checkbox" disabled="" />
+CTA dat san luon de thao tac (sticky action neu can).</li>
+</ul>
+<h4 id="hold-creation-screen-cus-07-cus-08-cus-10-sys-01-sys-02">4.6.3 Hold creation screen (CUS-07, CUS-08, CUS-10, SYS-01, SYS-02)</h4>
+<ul class="incremental">
+<li><input type="checkbox" disabled="" />
+Customer co the chon private hoac shared ma khong nham lan.</li>
+<li><input type="checkbox" disabled="" />
+Shared quantity khong vuot qua suc chua con lai.</li>
+<li><input type="checkbox" disabled="" />
+Khi submit, tao hold thanh cong thi hien <code>expires_at</code> ro rang.</li>
+<li><input type="checkbox" disabled="" />
+Neu hold that bai do conflict, hien thong bao de hieu va cho chon lai nhanh.</li>
+<li><input type="checkbox" disabled="" />
+Retry submit khong tao hold trung (idempotency hoat dong).</li>
+</ul>
+<h4 id="checkout-screen-cus-10-cus-15-cus-20">4.6.4 Checkout screen (CUS-10, CUS-15, CUS-20)</h4>
+<ul class="incremental">
+<li><input type="checkbox" disabled="" />
+Tong tien, chi tiet slot, surcharge hien thi ro rang trong 1 cot.</li>
+<li><input type="checkbox" disabled="" />
+CTA thanh toan de thao tac bang 1 tay (thumb-friendly).</li>
+<li><input type="checkbox" disabled="" />
+Input lien quan thanh toan toi gian, khong co field thua.</li>
+<li><input type="checkbox" disabled="" />
+Submit checkout nhieu lan khong tao booking duplicate.</li>
+<li><input type="checkbox" disabled="" />
+Neu session/hold het han, redirect va thong bao ro rang.</li>
+</ul>
+<h4 id="payment-method-payment-status-screen-cus-12-cus-13-cus-14-pay-01-pay-02">4.6.5 Payment method + payment status screen (CUS-12, CUS-13, CUS-14, PAY-01, PAY-02)</h4>
+<ul class="incremental">
+<li><input type="checkbox" disabled="" />
+Chon VNPay hoac Bank QR ro rang, khong mo ho.</li>
+<li><input type="checkbox" disabled="" />
+Luong redirect VNPay quay lai app an toan va cap nhat trang thai dung.</li>
+<li><input type="checkbox" disabled="" />
+QR dong hien du amount + reference de doi soat.</li>
+<li><input type="checkbox" disabled="" />
+Trang thai <code>Pending/Paid/Failed</code> duoc cap nhat dung voi callback/IPN.</li>
+<li><input type="checkbox" disabled="" />
+Webhook/callback duplicate khong gay duplicate transition.</li>
+</ul>
+<h4 id="booking-history-screen-cus-05-cus-14">4.6.6 Booking history screen (CUS-05, CUS-14)</h4>
+<ul class="incremental">
+<li><input type="checkbox" disabled="" />
+Danh sach booking hien thi gon tren mobile (date, court, status, amount).</li>
+<li><input type="checkbox" disabled="" />
+Co bo loc co ban (status/date) ma khong lam roi flow.</li>
+<li><input type="checkbox" disabled="" />
+Scroll dai van muot, phan trang/load-more hoat dong dung.</li>
+<li><input type="checkbox" disabled="" />
+Chon 1 booking mo duoc trang chi tiet.</li>
+</ul>
+<h4 id="booking-detail-check-in-code-screen-cus-11-sys-04-sys-05">4.6.7 Booking detail + check-in code screen (CUS-11, SYS-04, SYS-05)</h4>
+<ul class="incremental">
+<li><input type="checkbox" disabled="" />
+Check-in code chi hien thi khi payment da <code>Paid</code>.</li>
+<li><input type="checkbox" disabled="" />
+Trang thai code (<code>ACTIVE/USED/EXPIRED</code>) hien thi ro va nhat quan.</li>
+<li><input type="checkbox" disabled="" />
+Code de copy/doi chieu nhanh tren mobile.</li>
+<li><input type="checkbox" disabled="" />
+Neu code het han/da dung, UI thong bao ro ly do.</li>
+<li><input type="checkbox" disabled="" />
+End-of-day expiry duoc phan anh dung tren UI sau khi dong bo du lieu.</li>
+</ul>
+<h4 id="profileaccount-screen-cus-01..cus-04">4.6.8 Profile/account screen (CUS-01..CUS-04)</h4>
+<ul class="incremental">
+<li><input type="checkbox" disabled="" />
+Register/Login/Forgot password forms de nhap va validation ro rang.</li>
+<li><input type="checkbox" disabled="" />
+Loi validation field hien tai cho, khong chi hien toast chung.</li>
+<li><input type="checkbox" disabled="" />
+Password rules va error message de hieu tren mobile.</li>
+<li><input type="checkbox" disabled="" />
+Update profile thanh cong co feedback ngay (toast/inline).</li>
+</ul>
+<h4 id="admin-check-in-screen-adm-07-adm-08">4.6.9 Admin check-in screen (ADM-07, ADM-08)</h4>
+<ul class="incremental">
+<li><input type="checkbox" disabled="" />
+Admin submit code nhanh tren mobile tai quay check-in.</li>
+<li><input type="checkbox" disabled="" />
+Ket qua <code>valid/invalid/used/expired</code> tra ve duoi 1 trang thai de hieu.</li>
+<li><input type="checkbox" disabled="" />
+Sau khi redeem thanh cong, code khong dung lai duoc.</li>
+<li><input type="checkbox" disabled="" />
+Action check-in duoc ghi audit day du (<code>admin_user_id</code>, timestamp, booking ref).</li>
+</ul>
+<h2 id="programming-paradigms-applied">5. Programming Paradigms Applied</h2>
+<h3 id="mvc-model-view-controller">5.1 MVC (Model-View-Controller)</h3>
+<ul class="incremental">
+<li><code>View</code>: Razor Pages/MVC views cho booking, checkout, profile, admin dashboard.</li>
+<li><code>Controller/PageModel</code>: tiep nhan request, validate input, goi application service.</li>
+<li><code>Model</code>: domain entities/value objects/DTO.</li>
+<li>Rule: Controller khong chua business logic phuc tap; logic nam o service/use-case.</li>
+</ul>
+<h3 id="convention-over-configuration">5.2 Convention over Configuration</h3>
+<ul class="incremental">
+<li>Theo conventions cua ASP.NET Core:
+<ul class="incremental">
+<li>Folder structure theo feature/domain.</li>
+<li>Routing conventions cho Razor Pages va API controllers.</li>
+<li>Naming conventions cho DTO/command/query/handler.</li>
+</ul></li>
+<li>Chi override config khi co ly do nghiep vu hoac non-functional requirement ro rang.</li>
+</ul>
+<h3 id="object-oriented-programming-oop">5.3 Object-Oriented Programming (OOP)</h3>
+<ul class="incremental">
+<li>Domain model hoa thanh entities, value objects, aggregates.</li>
+<li>Encapsulation:
+<ul class="incremental">
+<li>Invariants booking/shared capacity nam trong domain service/aggregate methods.</li>
+</ul></li>
+<li>Abstraction qua interfaces:
+<ul class="incremental">
+<li><code>IPaymentGateway</code>, <code>IBookingService</code>, <code>IRefundService</code>, <code>ICheckInService</code>.</li>
+</ul></li>
+</ul>
+<h3 id="functional-programming-style-trong-.net">5.4 Functional Programming style trong .NET</h3>
+<ul class="incremental">
+<li>Uu tien pure function cho:
+<ul class="incremental">
+<li>Pricing calculation.</li>
+<li>Cancellation eligibility.</li>
+<li>Loyalty points calculation.</li>
+<li>Signature validation utility.</li>
+</ul></li>
+<li>Immutability cho request/response DTO va event payload.</li>
+<li>Han che side effects trong ham tinh toan; side effects tap trung tai orchestration layer.</li>
+</ul>
+<h3 id="event-driven-reactive-concepts">5.5 Event-Driven / Reactive concepts</h3>
+<ul class="incremental">
+<li>Domain events noi bo (publish sau commit):
+<ul class="incremental">
+<li><code>HoldCreated</code>, <code>PaymentConfirmed</code>, <code>BookingConfirmed</code>, <code>BookingCancelled</code>, <code>CheckInRedeemed</code>.</li>
+</ul></li>
+<li>Event handlers:
+<ul class="incremental">
+<li>Tao check-in code sau <code>PaymentConfirmed</code>.</li>
+<li>Cong diem loyalty sau <code>BookingCompleted</code>.</li>
+<li>Trigger report counters/audit projections.</li>
+</ul></li>
+<li>Outbox pattern (khuyen nghi) de dam bao khong mat event khi co loi tai integration.</li>
+</ul>
+<h2 id="design-principles-applied">6. Design Principles Applied</h2>
+<h3 id="separation-of-concerns-soc">6.1 Separation of Concerns (SoC)</h3>
+<ul class="incremental">
+<li>Presentation (Razor/API), Application (use-cases), Domain (rules), Infrastructure (DB/external providers) tach ro.</li>
+<li>Security middleware tach khoi business flow.</li>
+</ul>
+<h3 id="solid">6.2 SOLID</h3>
+<ul class="incremental">
+<li><code>S</code>: moi service phu trach 1 concern (booking, payment, pricing, check-in).</li>
+<li><code>O</code>: them provider payment moi qua abstraction, khong sua core flow.</li>
+<li><code>L</code>: implementation payment provider thay the duoc qua interface.</li>
+<li><code>I</code>: interface nho, theo capability (<code>ISignatureVerifier</code>, <code>IRefundExecutor</code>).</li>
+<li><code>D</code>: dependency theo abstraction; DI container resolve concretions.</li>
+</ul>
+<h3 id="high-cohesion-low-coupling">6.3 High Cohesion, Low Coupling</h3>
+<ul class="incremental">
+<li>Module inventory giu tron logic inventory.</li>
+<li>Payment module khong can biet chi tiet persistence cua booking.</li>
+<li>Event-based integration giam coupling truc tiep.</li>
+</ul>
+<h3 id="composition-over-inheritance">6.4 Composition over Inheritance</h3>
+<ul class="incremental">
+<li>Build service bang composition:
+<ul class="incremental">
+<li>validation + policy + repository + gateway.</li>
+</ul></li>
+<li>Tranh deep inheritance hierarchy trong domain/application services.</li>
+</ul>
+<h3 id="dry">6.5 DRY</h3>
+<ul class="incremental">
+<li>Reuse chung:
+<ul class="incremental">
+<li>idempotency filter/middleware.</li>
+<li>secure header middleware.</li>
+<li>webhook signature verification utility.</li>
+<li>common result/error model.</li>
+</ul></li>
+</ul>
+<h3 id="kiss">6.6 KISS</h3>
+<ul class="incremental">
+<li>Giu modular monolith thay vi microservices o quy mo hien tai.</li>
+<li>Chon in-memory cache cho read-optimization don gian.</li>
+<li>Chi duy tri 1 luong booking/hold/payment core, tranh branching phuc tap.</li>
+</ul>
+<h3 id="yagni">6.7 YAGNI</h3>
+<ul class="incremental">
+<li>Chua tach thanh microservices khi chua co nhu cau scale/doc lap deploy.</li>
+<li>Chua mo rong workflow engine phuc tap cho refund neu rule hien tai du.</li>
+<li>Chua them distributed cache khi read pressure chua dat nguong.</li>
+</ul>
+<h2 id="functional-design-by-module">7. Functional Design by Module</h2>
+<h3 id="identity-account">7.1 Identity &amp; Account</h3>
+<ul class="incremental">
+<li>Register/login/forgot password/reset password.</li>
+<li>Profile management.</li>
+<li>Role-based authorization (<code>Customer</code>, <code>Admin</code>).</li>
+</ul>
+<h3 id="court-availability-booking">7.2 Court Availability &amp; Booking</h3>
+<ul class="incremental">
+<li>Availability read theo date/time.</li>
+<li>Hold inventory voi TTL.</li>
+<li>Private booking va shared booking.</li>
+<li>Rule bat buoc:
+<ul class="incremental">
+<li>no double booking same court same time.</li>
+<li>shared capacity &lt;= 8.</li>
+</ul></li>
+</ul>
+<h3 id="payment">7.3 Payment</h3>
+<ul class="incremental">
+<li>VNPay redirect + IPN signature verification.</li>
+<li>Bank QR dynamic amount + reference.</li>
+<li>Payment status machine: Pending/Paid/Failed.</li>
+<li>Idempotent provider callback processing.</li>
+</ul>
+<h3 id="check-in">7.4 Check-in</h3>
+<ul class="incremental">
+<li>Generate random check-in code sau payment success.</li>
+<li>Admin redeem code atomically (FOR UPDATE).</li>
+<li>Mark code used/expired.</li>
+<li>End-of-day expiry job.</li>
+</ul>
+<h3 id="cancellation-refund">7.5 Cancellation &amp; Refund</h3>
+<ul class="incremental">
+<li>Eligibility rule: huy truoc &gt;=2h moi du dieu kien hoan.</li>
+<li>Refund strategy configurable (100%, 95%, wallet/internal) theo policy.</li>
+<li>Manual admin approval path cho truong hop dac biet.</li>
+</ul>
+<h3 id="pricing">7.6 Pricing</h3>
+<ul class="incremental">
+<li>Time-frame pricing.</li>
+<li>Peak/off-peak.</li>
+<li>Weekend surcharge.</li>
+<li>Private/shared distinct pricing.</li>
+</ul>
+<h3 id="loyalty">7.7 Loyalty</h3>
+<ul class="incremental">
+<li>Conversion rule: 10,000 VND = 1 point.</li>
+<li>Award points only when booking completed.</li>
+<li>Tier model: Silver/Gold/Platinum.</li>
+</ul>
+<h3 id="reporting">7.8 Reporting</h3>
+<ul class="incremental">
+<li>Dashboard bookings/revenue.</li>
+<li>Export Excel.</li>
+<li>Audit log-based traceability.</li>
+</ul>
+<h2 id="data-and-transaction-design">8. Data and Transaction Design</h2>
+<h3 id="core-entities">8.1 Core entities</h3>
+<ul class="incremental">
+<li><code>courts</code>, <code>time_buckets</code>, <code>court_buckets</code></li>
+<li><code>holds</code>, <code>hold_items</code></li>
+<li><code>bookings</code>, <code>booking_items</code></li>
+<li><code>payments</code>, <code>payment_events</code>, <code>refunds</code></li>
+<li><code>checkin_codes</code></li>
+<li><code>pricing_rules</code>, <code>loyalty_ledger</code>, <code>audit_log</code></li>
+</ul>
+<h3 id="transaction-boundaries">8.2 Transaction boundaries</h3>
+<ul class="incremental">
+<li><code>CreateHold</code>: lock <code>court_buckets</code> rows with deterministic order + update invariants + insert hold items.</li>
+<li><code>ConfirmPayment</code>: idempotent transition + create booking items + generate check-in codes.</li>
+<li><code>RedeemCheckIn</code>: lock code row + validate + mark used + audit.</li>
+</ul>
+<h3 id="consistency-strategy">8.3 Consistency strategy</h3>
+<ul class="incremental">
+<li>Strong consistency cho inventory/payment transition qua ACID transaction.</li>
+<li>Eventual consistency cho non-critical side effects qua background events/jobs.</li>
+</ul>
+<h2 id="api-and-interaction-design">9. API and Interaction Design</h2>
+<h3 id="representative-apis">9.1 Representative APIs</h3>
+<ul class="incremental">
+<li>Availability: <code>GET /api/availability</code></li>
+<li>Holds: <code>POST /api/holds</code>, <code>DELETE /api/holds/{id}</code></li>
+<li>Checkout: <code>POST /api/checkout</code></li>
+<li>VNPay: <code>POST /api/payments/vnpay/initiate</code>, <code>POST /payments/vnpay/ipn</code></li>
+<li>Bank QR: <code>POST /api/payments/bankqr/create</code>, <code>POST /payments/bankqr/callback</code></li>
+<li>Check-in: <code>POST /api/checkin/validate</code> (Admin)</li>
+<li>Admin config: <code>PUT /admin/courts/{id}</code>, <code>PUT /admin/pricing/rules/{id}</code></li>
+</ul>
+<h3 id="idempotency-contract">9.2 Idempotency contract</h3>
+<ul class="incremental">
+<li>Bat buoc <code>Idempotency-Key</code> cho create/transition endpoints.</li>
+<li>Persist tuple:
+<ul class="incremental">
+<li><code>user_id</code>, <code>endpoint</code>, <code>idempotency_key</code>, <code>request_hash</code>, <code>response_snapshot</code>.</li>
+</ul></li>
+<li>Duplicate request tra lai stored response.</li>
+</ul>
+<h2 id="security-architecture-in-app-first">10. Security Architecture (In-App First)</h2>
+<h3 id="mandatory-secure-coding-controls">10.1 Mandatory secure coding controls</h3>
+<ol class="incremental" type="1">
+<li>Parameterized queries only.</li>
+<li>Razor default HTML encoding (review strict voi <code>Html.Raw</code>).</li>
+<li>Input model validation (DataAnnotations + server-side checks).</li>
+<li>CSRF protection (<code>AutoValidateAntiforgeryToken</code>).</li>
+<li>Secure cookie config (<code>Secure</code>, <code>HttpOnly</code>, <code>SameSite</code>, TLS only).</li>
+<li>Rate limiting (global + endpoint policies).</li>
+<li>Secure headers (CSP, nosniff, frame controls, referrer policy, cache-control).</li>
+<li>Validate payment webhook signature before state transition.</li>
+<li>Idempotency for booking and payment.</li>
+</ol>
+<h3 id="secrets-and-config">10.2 Secrets and config</h3>
+<ul class="incremental">
+<li>Khong ghi key vao logs hoac plaintext config.</li>
+<li>Sensitive config duoc ma hoa (AES).</li>
+<li>AES key inject qua environment variable chi tai runtime (ECS task/container env).</li>
+</ul>
+<h2 id="deployment-and-operations">11. Deployment and Operations</h2>
+<h3 id="deployment-topology">11.1 Deployment topology</h3>
+<ul class="incremental">
+<li>ALB -&gt; ECS/Fargate Web App tasks.</li>
+<li>ECS/Fargate Worker tasks.</li>
+<li>Aurora Serverless v2.</li>
+<li>S3 for export/artifacts.</li>
+</ul>
+<h3 id="runtime-operations">11.2 Runtime operations</h3>
+<ul class="incremental">
+<li>Health endpoints: <code>/healthz</code>, <code>/readyz</code>.</li>
+<li>Structured logs + retention policy.</li>
+<li>Theo doi mobile web metrics (LCP, INP, CLS) trong qua trinh van hanh.</li>
+<li>Daily jobs:
+<ul class="incremental">
+<li>expire holds.</li>
+<li>expire old check-in codes.</li>
+</ul></li>
+</ul>
+<h3 id="reliability-tactics">11.3 Reliability tactics</h3>
+<ul class="incremental">
+<li>Retry voi jitter cho deadlock/transient DB errors.</li>
+<li>Payment callback dedupe.</li>
+<li>Graceful degradation neu bank callback delayed (polling/manual fallback).</li>
+</ul>
+<h2 id="traceability-to-user-stories">12. Traceability to User Stories</h2>
+<ul class="incremental">
+<li>Customer stories: <code>CUS-01..CUS-20</code> (tham chieu <code>user-stories-functional.md</code>).</li>
+<li>Admin stories: <code>ADM-01..ADM-13</code>.</li>
+<li>Provider/public stories: <code>PUB-01</code>, <code>PAY-01..PAY-02</code>.</li>
+<li>System automation: <code>SYS-01..SYS-09</code>.</li>
+</ul>
+<p>Muc tieu la moi module trong SDD nay phai map duoc toi it nhat 1 user story va 1 business rule trong requirement.</p>
+<h2 id="suggested-project-structure-coding-by-convention">13. Suggested Project Structure (Coding by Convention)</h2>
+<pre class="text"><code>src/
+  Web/
+    Controllers/
+    Pages/
+    Views/
+    ViewComponents/
+    Middleware/
+    Filters/
+    UI/
+      Bootstrap/
+      Tailwind/
+      Tokens/
+  Application/
+    Booking/
+    Payment/
+    CheckIn/
+    Pricing/
+    Loyalty/
+    Common/
+  Domain/
+    Entities/
+    ValueObjects/
+    Events/
+    Policies/
+    Services/
+  Infrastructure/
+    Persistence/
+    Payments/
+    QrBanking/
+    Security/
+    BackgroundJobs/
+  Worker/
+    Jobs/
+    EventHandlers/</code></pre>
+<h2 id="out-of-scope-current-phase">14. Out of Scope (Current Phase)</h2>
+<ul class="incremental">
+<li>Microservices decomposition.</li>
+<li>Distributed cache.</li>
+<li>Advanced CQRS/read replica segregation.</li>
+<li>Real-time push notification phuc tap.</li>
+</ul>
+<p>Tai lieu nay la baseline de team implementation, test plan, va architecture review co cung ngon ngu thiet ke.</p>
