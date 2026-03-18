@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RentalApp.Application.Features.Auth;
 using RentalApp.Web.Security;
 
 namespace RentalApp.Web.Pages.Auth;
 
-public sealed class LoginModel(DevelopmentAuthStore authStore) : PageModel
+public sealed class LoginModel(IUserAuthService authService) : PageModel
 {
     [BindProperty]
     public InputModel Input { get; set; } = new();
@@ -26,9 +27,10 @@ public sealed class LoginModel(DevelopmentAuthStore authStore) : PageModel
             return Page();
         }
 
-        if (!authStore.ValidateCredentials(Input.Email, Input.Password, out var principal))
+        var result = await authService.AuthenticateAsync(Input.Email, Input.Password, HttpContext.RequestAborted);
+        if (!result.Success || result.User is null)
         {
-            ModelState.AddModelError(string.Empty, "Thong tin dang nhap khong hop le.");
+            ModelState.AddModelError(string.Empty, result.Error ?? "Thong tin dang nhap khong hop le.");
             return Page();
         }
 
@@ -40,7 +42,7 @@ public sealed class LoginModel(DevelopmentAuthStore authStore) : PageModel
 
         await HttpContext.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme,
-            principal,
+            DbAuthenticatedUserClaimsPrincipalFactory.Create(result.User),
             properties);
 
         if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))

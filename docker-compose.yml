@@ -6,10 +6,9 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__RentalApp: Server=host.docker.internal;Port=3306;Database=rental_app;User=root;Password=;TreatTinyAsBoolean=true;AllowPublicKeyRetrieval=true;SslMode=None
     ports:
       - "8080:8080"
-    depends_on:
-      - db
 
   worker:
     build:
@@ -17,19 +16,4 @@ services:
       dockerfile: build/docker/worker.Dockerfile
     environment:
       DOTNET_ENVIRONMENT: Development
-    depends_on:
-      - db
-
-  db:
-    image: mysql:8.4
-    restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: rental_app
-      MYSQL_ROOT_PASSWORD: rootpw
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
-
-volumes:
-  mysql-data:
+      ConnectionStrings__RentalApp: Server=host.docker.internal;Port=3306;Database=rental_app;User=root;Password=;TreatTinyAsBoolean=true;AllowPublicKeyRetrieval=true;SslMode=None

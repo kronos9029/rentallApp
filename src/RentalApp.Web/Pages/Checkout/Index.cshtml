@@ -1,0 +1,119 @@
+@page
+@model RentalApp.Web.Pages.Checkout.IndexModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<section class="mb-4">
+    <span class="badge bg-success-subtle text-success-emphasis mb-2">Sprint 2 Part 2</span>
+    <h1 class="h2 mb-2">Checkout</h1>
+    <p class="text-muted mb-0">Xac nhan hold hop le, tao booking pending va checkout order truoc khi sang payment o Sprint 3.</p>
+</section>
+
+@if (Model.Order is not null)
+{
+    <div class="alert alert-success">
+        Da tao checkout thanh cong. Order <code>@Model.Order.OrderId[..8]</code> dang o trang thai <strong>@Model.Order.Status</strong>.
+    </div>
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+@if (Model.Preview is null)
+{
+    <div class="alert alert-warning">Khong tim thay du lieu checkout.</div>
+    return;
+}
+
+<section class="row g-3">
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                    <div>
+                        <h2 class="h5 mb-1">Chi tiet slot</h2>
+                        <div class="text-muted small">Hold <code>@Model.Preview.HoldId[..8]</code> - @Model.Preview.HoldStatus</div>
+                    </div>
+                    <span class="badge text-bg-light">Het han @Model.Preview.ExpiresAtUtc.ToString("dd/MM/yyyy HH:mm")</span>
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(Model.Preview.ErrorMessage))
+                {
+                    <div class="alert alert-warning">@Model.Preview.ErrorMessage</div>
+                }
+
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>San</th>
+                                <th>Khung gio</th>
+                                <th>Loai</th>
+                                <th>So luong</th>
+                                <th>Thanh tien</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Preview.Items)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="fw-medium">@item.CourtCode</div>
+                                        <div class="small text-muted">@item.CourtName</div>
+                                    </td>
+                                    <td>@item.StartAtUtc.ToString("dd/MM/yyyy HH:mm") - @item.EndAtUtc.ToString("HH:mm")</td>
+                                    <td>@item.BookingMode</td>
+                                    <td>@item.SlotQuantity</td>
+                                    <td>@item.LineTotal.ToString("N0") VND</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Tong quan</h2>
+                <dl class="row mb-0">
+                    <dt class="col-5">Hold</dt>
+                    <dd class="col-7"><code>@Model.Preview.HoldId[..8]</code></dd>
+
+                    <dt class="col-5">Tong tien</dt>
+                    <dd class="col-7 fw-semibold">@Model.Preview.TotalAmount.ToString("N0") VND</dd>
+
+                    <dt class="col-5">Trang thai</dt>
+                    <dd class="col-7">@Model.Preview.HoldStatus</dd>
+
+                    @if (!string.IsNullOrWhiteSpace(Model.Preview.ExistingOrderId))
+                    {
+                        <dt class="col-5">Order</dt>
+                        <dd class="col-7"><code>@Model.Preview.ExistingOrderId[..8]</code></dd>
+                    }
+                </dl>
+
+                <hr />
+
+                <form method="post" class="d-grid gap-2">
+                    <input type="hidden" asp-for="Input.HoldId" />
+                    <input type="hidden" asp-for="Input.IdempotencyKey" />
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        disabled="@(!Model.Preview.CanCheckout || !string.IsNullOrWhiteSpace(Model.Preview.ExistingOrderId))">
+                        Tao checkout
+                    </button>
+                    <a asp-page="/Booking/Hold" asp-route-holdId="@Model.Preview.HoldId" class="btn btn-outline-secondary">Quay lai hold</a>
+                </form>
+
+                @if (!string.IsNullOrWhiteSpace(Model.Preview.ExistingOrderId))
+                {
+                    <p class="small text-muted mt-3 mb-0">Checkout nay da duoc tao truoc do. Payment se duoc noi tiep o Sprint 3.</p>
+                }
+            </div>
+        </div>
+    </div>
+</section>

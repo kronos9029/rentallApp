@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RentalApp.Web.Security;
+using RentalApp.Application.Features.Auth;
 
 namespace RentalApp.Web.Pages.Auth;
 
-public sealed class RegisterModel(DevelopmentAuthStore authStore) : PageModel
+public sealed class RegisterModel(IUserAuthService authService) : PageModel
 {
     [BindProperty]
     public InputModel Input { get; set; } = new();
@@ -17,14 +17,18 @@ public sealed class RegisterModel(DevelopmentAuthStore authStore) : PageModel
     {
     }
 
-    public IActionResult OnPost()
+    public async Task<IActionResult> OnPostAsync()
     {
         if (!ModelState.IsValid)
         {
             return Page();
         }
 
-        var result = authStore.RegisterCustomer(Input.Email, Input.FullName, Input.Password);
+        var result = await authService.RegisterCustomerAsync(
+            Input.Email,
+            Input.FullName,
+            Input.Password,
+            HttpContext.RequestAborted);
         if (!result.Success)
         {
             ModelState.AddModelError(string.Empty, result.Error ?? "Khong the tao tai khoan.");

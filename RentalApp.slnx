@@ -7,6 +7,7 @@
     <Project Path="src/RentalApp.Worker/RentalApp.Worker.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/RentalApp.IntegrationTests/RentalApp.IntegrationTests.csproj" />
     <Project Path="tests/RentalApp.UnitTests/RentalApp.UnitTests.csproj" />
   </Folder>
 </Solution>

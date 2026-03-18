@@ -2,6 +2,12 @@
 -- Pickleball Court Booking - Complete SQL Schema
 -- Target: Aurora MySQL-Compatible (InnoDB)
 -- =========================================================
+-- NOTE:
+-- This file remains the full target design schema for the whole system.
+-- The currently implemented Sprint 1 foundation schema is documented in:
+--   docs/database-schema-implemented.sql
+-- The authoritative implementation also exists in EF Core migration:
+--   src/RentalApp.Infrastructure/Persistence/Migrations/20260318043353_Sprint01Foundation.cs
 
 CREATE DATABASE IF NOT EXISTS rental_app
   CHARACTER SET utf8mb4

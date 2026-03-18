@@ -5,12 +5,13 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RentalApp.Application.Features.Auth;
 using RentalApp.Web.Security;
 
 namespace RentalApp.Web.Pages.Account;
 
 [Authorize]
-public sealed class ProfileModel(DevelopmentAuthStore authStore) : PageModel
+public sealed class ProfileModel(IUserAuthService authService) : PageModel
 {
     [BindProperty]
     public InputModel Input { get; set; } = new();
@@ -20,24 +21,28 @@ public sealed class ProfileModel(DevelopmentAuthStore authStore) : PageModel
 
     public IReadOnlyList<string> Roles { get; private set; } = [];
 
-    public void OnGet()
+    public async Task<IActionResult> OnGetAsync()
     {
-        LoadCurrentUser();
+        var user = await LoadCurrentUserAsync();
+        return user is null ? RedirectToPage("/Auth/Login") : Page();
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        Input.Email = User.FindFirstValue(ClaimTypes.Email) ?? string.Empty;
-        Roles = User.FindAll(ClaimTypes.Role).Select(claim => claim.Value).ToArray();
+        var currentUser = await LoadCurrentUserAsync();
+        if (currentUser is null)
+        {
+            return RedirectToPage("/Auth/Login");
+        }
 
         if (!ModelState.IsValid)
         {
             return Page();
         }
 
-        var email = User.FindFirstValue(ClaimTypes.Email) ?? string.Empty;
-        var result = authStore.UpdateProfile(email, Input.FullName);
-        if (!result.Success || result.Principal is null)
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
+        var result = await authService.UpdateProfileAsync(userId, Input.FullName, HttpContext.RequestAborted);
+        if (!result.Success || result.User is null)
         {
             ModelState.AddModelError(string.Empty, result.Error ?? "Khong the cap nhat profile.");
             return Page();
@@ -46,18 +51,31 @@ public sealed class ProfileModel(DevelopmentAuthStore authStore) : PageModel
         var existingTicket = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         await HttpContext.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme,
-            result.Principal,
+            DbAuthenticatedUserClaimsPrincipalFactory.Create(result.User),
             existingTicket.Properties);
 
         StatusMessage = "Cap nhat profile thanh cong.";
         return RedirectToPage();
     }
 
-    private void LoadCurrentUser()
+    private async Task<AuthenticatedUser?> LoadCurrentUserAsync()
     {
-        Input.FullName = User.FindFirstValue(ClaimTypes.Name) ?? string.Empty;
-        Input.Email = User.FindFirstValue(ClaimTypes.Email) ?? string.Empty;
-        Roles = User.FindAll(ClaimTypes.Role).Select(claim => claim.Value).ToArray();
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return null;
+        }
+
+        var user = await authService.GetProfileAsync(userId, HttpContext.RequestAborted);
+        if (user is null)
+        {
+            return null;
+        }
+
+        Input.FullName = user.FullName;
+        Input.Email = user.Email;
+        Roles = user.Roles;
+        return user;
     }
 
     public sealed class InputModel

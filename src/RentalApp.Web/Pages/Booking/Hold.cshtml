@@ -1,0 +1,84 @@
+@page "{holdId}"
+@model RentalApp.Web.Pages.Booking.HoldModel
+@{
+    ViewData["Title"] = "Hold Summary";
+}
+
+@if (Model.Hold is null)
+{
+    <div class="alert alert-warning">Khong tim thay hold.</div>
+    return;
+}
+
+<section class="mb-4">
+    <span class="badge bg-success-subtle text-success-emphasis mb-2">Sprint 2</span>
+    <h1 class="h2 mb-2">Hold Summary</h1>
+    <p class="text-muted mb-0">Hold da duoc tao voi inventory lock, idempotency baseline, va co the di tiep sang checkout.</p>
+</section>
+
+<section class="row g-3">
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Khung gio da giu cho</h2>
+
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>San</th>
+                                <th>Khung gio</th>
+                                <th>Loai</th>
+                                <th>So luong</th>
+                                <th>Thanh tien</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Hold.Items)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="fw-medium">@item.CourtCode</div>
+                                        <div class="small text-muted">@item.CourtName</div>
+                                    </td>
+                                    <td>@item.StartAtUtc.ToString("dd/MM/yyyy HH:mm") - @item.EndAtUtc.ToString("HH:mm")</td>
+                                    <td>@item.BookingMode</td>
+                                    <td>@item.SlotQuantity</td>
+                                    <td>@item.LineTotal.ToString("N0") VND</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Tong quan</h2>
+                <dl class="row mb-0">
+                    <dt class="col-5">Hold ID</dt>
+                    <dd class="col-7"><code>@Model.Hold.HoldId[..8]</code></dd>
+
+                    <dt class="col-5">Trang thai</dt>
+                    <dd class="col-7">@Model.Hold.Status</dd>
+
+                    <dt class="col-5">Het han</dt>
+                    <dd class="col-7">@Model.Hold.ExpiresAtUtc.ToString("dd/MM/yyyy HH:mm")</dd>
+
+                    <dt class="col-5">Tong tien</dt>
+                    <dd class="col-7 fw-semibold">@Model.Hold.TotalAmount.ToString("N0") VND</dd>
+                </dl>
+
+                <hr />
+
+                <div class="d-grid gap-2">
+                    <a asp-page="/Booking/Availability" class="btn btn-outline-secondary">Quay lai availability</a>
+                    <a asp-page="/Checkout/Index" asp-route-holdId="@Model.Hold.HoldId" class="btn btn-primary">Tiep tuc checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

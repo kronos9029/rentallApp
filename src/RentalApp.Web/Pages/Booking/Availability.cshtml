@@ -1,0 +1,147 @@
+@page
+@model RentalApp.Web.Pages.Booking.AvailabilityModel
+@using RentalApp.Domain.Enums
+@{
+    ViewData["Title"] = "Availability";
+}
+
+<section class="mb-4">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3">
+        <div>
+            <span class="badge bg-success-subtle text-success-emphasis mb-2">Sprint 2 Part 1</span>
+            <h1 class="h2 mb-2">Tim availability va tao hold</h1>
+            <p class="text-muted mb-0">Chon ngay, loai booking va khung gio de tao hold voi pricing baseline va inventory lock.</p>
+        </div>
+    </div>
+</section>
+
+<section class="card shadow-sm mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-md-4">
+                <label asp-for="Filter.BookingDate" class="form-label"></label>
+                <input asp-for="Filter.BookingDate" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Filter.BookingMode" class="form-label"></label>
+                <select asp-for="Filter.BookingMode" class="form-select" asp-items="Html.GetEnumSelectList<BookingMode>()"></select>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Filter.SlotQuantity" class="form-label"></label>
+                <input asp-for="Filter.SlotQuantity" class="form-control" min="1" max="8" />
+            </div>
+            <div class="col-md-2 d-grid">
+                <button type="submit" class="btn btn-primary">Tai availability</button>
+            </div>
+        </form>
+        <div class="form-text mt-2">
+            Private booking chi dung 1 court slot moi bucket. Shared booking cho phep toi da 8 slot.
+        </div>
+    </div>
+</section>
+
+@if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+{
+    <div class="alert alert-info">@Model.StatusMessage</div>
+}
+
+@if (Model.Result is { Courts.Count: > 0 })
+{
+    <form method="post" asp-page-handler="CreateHold">
+        <input type="hidden" asp-for="Filter.BookingDate" />
+        <input type="hidden" asp-for="Filter.BookingMode" />
+        <input type="hidden" asp-for="Filter.SlotQuantity" />
+        <input type="hidden" asp-for="HoldInput.SlotQuantity" />
+        <input type="hidden" asp-for="HoldInput.IdempotencyKey" />
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="row g-3">
+            @foreach (var court in Model.Result.Courts)
+            {
+                <div class="col-12 col-lg-6">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                                <div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" asp-for="HoldInput.SelectedCourtId" value="@court.CourtId" />
+                                        <label class="form-check-label fw-semibold" for="HoldInput_SelectedCourtId">@court.CourtCode - @court.CourtName</label>
+                                    </div>
+                                </div>
+                                <span class="badge text-bg-light">@(court.Slots.Count(slot => slot.IsAvailable)) slot kha dung</span>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Chon</th>
+                                            <th>Khung gio</th>
+                                            <th>Gia</th>
+                                            <th>Trang thai</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var slot in court.Slots)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="checkbox"
+                                                        name="HoldInput.SelectedBucketIds"
+                                                        value="@slot.BucketId"
+                                                        disabled="@(!slot.IsAvailable)" />
+                                                </td>
+                                                <td>
+                                                    <div class="fw-medium">@slot.StartAtUtc.ToString("HH:mm") - @slot.EndAtUtc.ToString("HH:mm")</div>
+                                                    <div class="small text-muted">Bucket: @slot.BucketId[..8]</div>
+                                                </td>
+                                                <td>
+                                                    <div class="fw-medium">@slot.TotalPrice.ToString("N0") VND</div>
+                                                    <div class="small text-muted">@slot.UnitPrice.ToString("N0") VND / slot</div>
+                                                </td>
+                                                <td>
+                                                    @if (slot.IsAvailable)
+                                                    {
+                                                        <span class="badge bg-success-subtle text-success-emphasis">
+                                                            @(Model.Filter.BookingMode == BookingMode.Shared ? $"{slot.RemainingSharedSlots} slot con lai" : "Co the giu cho")
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge bg-danger-subtle text-danger-emphasis">@slot.UnavailableReason</span>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mt-4">
+            <p class="text-muted mb-0">
+                Hold se co han 15 phut va duoc dung cho hold summary truoc khi sang checkout o Sprint 2 Part 2.
+            </p>
+            <button type="submit" class="btn btn-primary">Tao hold</button>
+        </div>
+    </form>
+}
+else
+{
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p class="text-muted mb-0">Chua co availability cho ngay va bo loc da chon.</p>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -47,6 +47,7 @@ Xay dung Pickleball Court Booking Web App cho Customer va Admin, ho tro:
 | PB-06 | Hold | CUS-07,CUS-08,SYS-01,SYS-02 | Create hold with transactional locking | P0 | 13 | S2 |
 | PB-07 | Hold | CUS-10,SYS-03 | Multi-slot hold + hold expiry worker | P0 | 8 | S2 |
 | PB-08 | Checkout | CUS-10,CUS-20 | Checkout flow + idempotency key support | P0 | 8 | S2 |
+| PB-08C | Identity Delivery | CUS-03 | SMTP/email dispatch for password reset with expiring reset link | P1 | 3 | S2 |
 | PB-08A | Booking Read | CUS-05 | Booking history + booking detail + re-open check-in codes | P1 | 5 | S3 |
 | PB-08B | Reliability Baseline | SYS-08 | Deadlock-safe retry baseline for booking/hold flow | P0 | 5 | S2 |
 | PB-09 | Payment VNPay | CUS-12,CUS-14,PAY-01 | VNPay initiate + return + IPN verify | P0 | 13 | S3 |
@@ -70,6 +71,7 @@ Xay dung Pickleball Court Booking Web App cho Customer va Admin, ho tro:
 
 ## 6. Dependency Highlights
 - PB-04/PB-04A truoc PB-05/06/07/08
+- PB-02 truoc PB-08C
 - PB-03A truoc PB-12/16/17
 - PB-08/PB-08B truoc PB-09/10/11
 - PB-10 truoc PB-11/12/08A

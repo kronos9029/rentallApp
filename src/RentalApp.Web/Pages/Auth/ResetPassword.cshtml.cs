@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RentalApp.Web.Security;
+using RentalApp.Application.Features.Auth;
 
 namespace RentalApp.Web.Pages.Auth;
 
-public sealed class ResetPasswordModel(DevelopmentAuthStore authStore) : PageModel
+public sealed class ResetPasswordModel(IUserAuthService authService) : PageModel
 {
     [BindProperty]
     public InputModel Input { get; set; } = new();
@@ -15,16 +15,16 @@ public sealed class ResetPasswordModel(DevelopmentAuthStore authStore) : PageMod
 
     public bool IsLinkValid { get; private set; }
 
-    public void OnGet(string email, string token)
+    public async Task OnGetAsync(string email, string token)
     {
         Input.Email = email;
         Input.Token = token;
-        IsLinkValid = authStore.CanResetPassword(email, token);
+        IsLinkValid = await authService.CanResetPasswordAsync(email, token, HttpContext.RequestAborted);
     }
 
-    public IActionResult OnPost()
+    public async Task<IActionResult> OnPostAsync()
     {
-        IsLinkValid = authStore.CanResetPassword(Input.Email, Input.Token);
+        IsLinkValid = await authService.CanResetPasswordAsync(Input.Email, Input.Token, HttpContext.RequestAborted);
         if (!ModelState.IsValid || !IsLinkValid)
         {
             if (!IsLinkValid)
@@ -35,7 +35,11 @@ public sealed class ResetPasswordModel(DevelopmentAuthStore authStore) : PageMod
             return Page();
         }
 
-        var result = authStore.ResetPassword(Input.Email, Input.Token, Input.Password);
+        var result = await authService.ResetPasswordAsync(
+            Input.Email,
+            Input.Token,
+            Input.Password,
+            HttpContext.RequestAborted);
         if (!result.Success)
         {
             ModelState.AddModelError(string.Empty, result.Error ?? "Khong the dat lai mat khau.");
