@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore RentalApp.slnx
+
+      - name: Build
+        run: dotnet build RentalApp.slnx --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test RentalApp.slnx --no-build --configuration Release
+
+      - name: Docker build web image
+        run: docker build -f build/docker/web.Dockerfile -t rentalapp-web-ci .
+
+      - name: Docker build worker image
+        run: docker build -f build/docker/worker.Dockerfile -t rentalapp-worker-ci .

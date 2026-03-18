@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/RentalApp.Application/RentalApp.Application.csproj" />
+    <Project Path="src/RentalApp.Domain/RentalApp.Domain.csproj" />
+    <Project Path="src/RentalApp.Infrastructure/RentalApp.Infrastructure.csproj" />
+    <Project Path="src/RentalApp.Web/RentalApp.Web.csproj" />
+    <Project Path="src/RentalApp.Worker/RentalApp.Worker.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/RentalApp.UnitTests/RentalApp.UnitTests.csproj" />
+  </Folder>
+</Solution>

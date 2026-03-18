@@ -1,0 +1,53 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Pickleball Court Booking";
+}
+
+<section class="py-5 text-center">
+    <div class="container">
+        <span class="badge bg-success-subtle text-success-emphasis mb-3">Sprint 1 Part 1 Baseline</span>
+        <h1 class="display-5 fw-bold">RentalApp foundation da duoc scaffold</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 48rem;">
+            Ban scaffold nay gom Razor Pages web app, worker, auth baseline de test role-based access,
+            Docker/CI convention, va health endpoints de bat dau implementation theo SDD.
+        </p>
+        <div class="d-flex gap-2 justify-content-center flex-wrap mt-4">
+            <a class="btn btn-primary" asp-page="/Auth/Login">Dang nhap dev</a>
+            <a class="btn btn-outline-primary" asp-page="/Auth/Register">Tao tai khoan customer</a>
+            <a class="btn btn-outline-secondary" asp-area="Admin" asp-page="/Index">Vao admin area</a>
+        </div>
+        <p class="small text-muted mt-3 mb-0">
+            Tai khoan dev mac dinh: <code>admin@local.test / Admin123!</code> va <code>customer@local.test / Customer123!</code>.
+        </p>
+    </div>
+</section>
+
+<section class="container pb-4">
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5">Foundation</h2>
+                    <p class="mb-0 text-muted">Solution, project references, worker, health endpoints va secure headers middleware.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5">Auth Baseline</h2>
+                    <p class="mb-0 text-muted">Cookie auth + role-based access de verify login flow va admin route protection.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5">DevOps</h2>
+                    <p class="mb-0 text-muted">Dockerfile, docker compose va CI pipeline co san de tiep tuc Part 1 va Part 2.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

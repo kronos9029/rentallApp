@@ -16,17 +16,17 @@ Foundation, DevOps, Auth, Admin Access
 
 | Task ID | PB ID | Task | Output mong doi | Dependency | Status |
 |---|---|---|---|---|---|
-| S1-T01 | PB-01 | Tao solution structure theo SDD (`Web/Application/Domain/Infrastructure/Worker/tests/build`) | Solution skeleton chay duoc, folder structure khop SDD | None | TODO |
-| S1-T02 | PB-01 | Cau hinh base app startup, DI, logging, env config | `Program.cs` bootstrap duoc cho web app va worker | S1-T01 | TODO |
-| S1-T03 | PB-01 | Tao Dockerfile baseline cho web app va worker | Co `web.Dockerfile` va `worker.Dockerfile` build duoc | S1-T01 | TODO |
-| S1-T04 | PB-01 | Tao local container/dev environment (`docker-compose` hoac script tuong duong) | Local stack co the boot app + DB phuc vu dev/test | S1-T03 | TODO |
-| S1-T05 | PB-01 | Tao CI/CD pipeline baseline | Pipeline co build, test, image build, artifact/package step | S1-T01,S1-T03 | TODO |
-| S1-T06 | PB-02 | Implement register flow | Customer dang ky duoc voi email/password | S1-T02 | TODO |
-| S1-T07 | PB-02 | Implement login flow | Customer dang nhap duoc | S1-T06 | TODO |
-| S1-T08 | PB-02 | Implement forgot/reset password flow | Link reset password het han hoat dong dung | S1-T06 | TODO |
-| S1-T09 | PB-03 | Implement profile read/update | Customer xem/sua profile duoc | S1-T07 | TODO |
-| S1-T10 | PB-03A | Seed role `Admin` va `Customer` | Role seed local environment thanh cong | S1-T02 | TODO |
-| S1-T11 | PB-03A | Cau hinh area authorization cho admin pages/routes | Admin area bi chan voi user khong co role | S1-T10 | TODO |
+| S1-T01 | PB-01 | Tao solution structure theo SDD (`Web/Application/Domain/Infrastructure/Worker/tests/build`) | Solution skeleton chay duoc, folder structure khop SDD | None | DONE |
+| S1-T02 | PB-01 | Cau hinh base app startup, DI, logging, env config | `Program.cs` bootstrap duoc cho web app va worker | S1-T01 | DONE |
+| S1-T03 | PB-01 | Tao Dockerfile baseline cho web app va worker | Co `web.Dockerfile` va `worker.Dockerfile` build duoc | S1-T01 | DONE |
+| S1-T04 | PB-01 | Tao local container/dev environment (`docker-compose` hoac script tuong duong) | Local stack co the boot app + DB phuc vu dev/test | S1-T03 | DONE |
+| S1-T05 | PB-01 | Tao CI/CD pipeline baseline | Pipeline co build, test, image build, artifact/package step | S1-T01,S1-T03 | DONE |
+| S1-T06 | PB-02 | Implement register flow | Customer dang ky duoc voi email/password | S1-T02 | DONE |
+| S1-T07 | PB-02 | Implement login flow | Customer dang nhap duoc | S1-T06 | DONE |
+| S1-T08 | PB-02 | Implement forgot/reset password flow | Link reset password het han hoat dong dung | S1-T06 | DONE |
+| S1-T09 | PB-03 | Implement profile read/update | Customer xem/sua profile duoc | S1-T07 | DONE |
+| S1-T10 | PB-03A | Seed role `Admin` va `Customer` | Role seed local environment thanh cong | S1-T02 | DONE |
+| S1-T11 | PB-03A | Cau hinh area authorization cho admin pages/routes | Admin area bi chan voi user khong co role | S1-T10 | DONE |
 
 ## Part 2
 Database, Pricing, Security, Encrypted Config, Test Baseline
@@ -48,6 +48,11 @@ Database, Pricing, Security, Encrypted Config, Test Baseline
 ## Suggested Sequence
 1. Part 1: hoan thanh skeleton, Docker, CI/CD, auth, role/authorization (`S1-T01..S1-T11`).
 2. Part 2: hoan thanh database bootstrap, pricing, security, encrypted config, va test baseline (`S1-T12..S1-T22`).
+
+## Current Progress
+- Part 1 da co skeleton solution, web/worker Dockerfile, `docker-compose`, CI workflow, va auth baseline cho login/register/admin access.
+- Part 1 da co forgot/reset password flow voi token reset in-memory co expiry va page reset password dung duoc trong moi truong dev.
+- Part 1 da co profile read/update va refresh lai auth claims sau khi cap nhat ten hien thi.
 
 ## Done Checklist
 - Customer co the register/login/reset password.

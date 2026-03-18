@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\RentalApp.Application\RentalApp.Application.csproj" />
+    <ProjectReference Include="..\RentalApp.Infrastructure\RentalApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\RentalApp.Domain\RentalApp.Domain.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,42 @@
+@page
+@model RentalApp.Web.Areas.Admin.Pages.IndexModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 mb-1">Admin Dashboard</h1>
+            <p class="text-muted mb-0">Khu vuc duoc bao ve bang role <code>Admin</code> de verify authorization baseline.</p>
+        </div>
+        <span class="badge bg-dark">Admin only</span>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5">Court Ops</h2>
+                    <p class="mb-0 text-muted">Placeholder cho court management se duoc mo rong o Sprint 4.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5">Pricing</h2>
+                    <p class="mb-0 text-muted">Baseline area de sau nay noi vao pricing rules va audit logs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5">Health</h2>
+                    <p class="mb-0 text-muted">Su dung <code>/healthz</code> va <code>/readyz</code> de verify web runtime readiness.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
