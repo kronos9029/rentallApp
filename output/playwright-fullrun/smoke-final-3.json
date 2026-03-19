@@ -1,0 +1,350 @@
+{
+  "config": {
+    "configFile": "D:\\rentalApp\\docs\\test case\\playwright.config.ts",
+    "rootDir": "D:/rentalApp/docs/test case/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/rentalApp/docs/test case/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/rentalApp/docs/test case/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "runAgents": "none",
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.58.2",
+    "workers": 1,
+    "webServer": {
+      "command": "dotnet run --project src/RentalApp.Web/RentalApp.Web.csproj --no-launch-profile",
+      "cwd": "D:\\rentalApp",
+      "url": "https://localhost:7048/healthz",
+      "ignoreHTTPSErrors": true,
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "env": {
+        "ALLUSERSPROFILE": "C:\\ProgramData",
+        "ANT_HOME": "C:\\enterprise\\apache-ant-1.10.1",
+        "APPDATA": "C:\\Users\\Admin\\AppData\\Roaming",
+        "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_12132_ZUFXXKDUDBEMTIAZ",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE": "Codex Desktop",
+        "CODEX_SHELL": "1",
+        "CODEX_THREAD_ID": "019d0033-bbd5-74c0-9379-6ce63343365f",
+        "COLOR": "0",
+        "CommonProgramFiles": "C:\\Program Files\\Common Files",
+        "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+        "CommonProgramW6432": "C:\\Program Files\\Common Files",
+        "COMPUTERNAME": "PHATPT",
+        "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+        "DISABLE_AUTO_UPDATE": "true",
+        "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+        "EDITOR": "C:\\WINDOWS\\notepad.exe",
+        "ENTERPRISE": "C:\\enterprise",
+        "HOME": "C:\\Users\\Admin",
+        "HOMEDRIVE": "C:",
+        "HOMEPATH": "\\Users\\Admin",
+        "INIT_CWD": "D:\\rentalApp\\docs\\test case",
+        "IntelliJ IDEA": "D:\\IntelliJ IDEA 2025.1.2\\bin;",
+        "JAVA_HOME": "C:\\enterprise\\jdk1.8.0_191",
+        "JBOSS_HOME": "C:\\enterprise\\wildfly-18.0.1.Final",
+        "JRE_HOME": "C:\\enterprise\\jdk1.8.0_191\\jre",
+        "KARAF_HOME": "C:\\enterprise\\apache-karaf-4.3.3",
+        "LOCALAPPDATA": "C:\\Users\\Admin\\AppData\\Local",
+        "LOGONSERVER": "\\\\PHATPT",
+        "M2_HOME": "C:\\enterprise\\apache-maven-3.8.5",
+        "MASTER_KEY": "fwfJ+Qurs9ulqkSK40MAm/u0aGWiJhulzua98kvUuog=",
+        "MAVEN_HOME": "C:\\enterprise\\apache-maven-3.8.5",
+        "NODE": "D:\\node\\node-v24.13.1-win-x64\\node.exe",
+        "NODE_EXE": "D:\\node\\node-v24.13.1-win-x64\\\\node.exe",
+        "npm_command": "exec",
+        "npm_config_cache": "D:\\node\\npm-cache",
+        "npm_config_globalconfig": "D:\\node\\npm-global\\etc\\npmrc",
+        "npm_config_global_prefix": "D:\\node\\npm-global",
+        "npm_config_init_module": "C:\\Users\\Admin\\.npm-init.js",
+        "npm_config_local_prefix": "D:\\rentalApp\\docs\\test case",
+        "npm_config_node_gyp": "D:\\node\\node-v24.13.1-win-x64\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js",
+        "npm_config_noproxy": "",
+        "npm_config_npm_version": "11.8.0",
+        "npm_config_prefix": "D:\\node\\npm-global",
+        "npm_config_userconfig": "C:\\Users\\Admin\\.npmrc",
+        "npm_config_user_agent": "npm/11.8.0 node/v24.13.1 win32 x64 workspaces/false",
+        "npm_execpath": "D:\\node\\node-v24.13.1-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "npm_lifecycle_event": "npx",
+        "npm_lifecycle_script": "playwright",
+        "npm_node_execpath": "D:\\node\\node-v24.13.1-win-x64\\node.exe",
+        "npm_package_json": "D:\\rentalApp\\docs\\test case\\package.json",
+        "npm_package_name": "rentalapp-playwright-test-cases",
+        "npm_package_version": "1.0.0",
+        "NPM_PREFIX_JS": "D:\\node\\node-v24.13.1-win-x64\\\\node_modules\\npm\\bin\\npm-prefix.js",
+        "NPM_PREFIX_NPX_CLI_JS": "D:\\node\\npm-global\\node_modules\\npm\\bin\\npx-cli.js",
+        "NPX_CLI_JS": "D:\\node\\node-v24.13.1-win-x64\\\\node_modules\\npm\\bin\\npx-cli.js",
+        "NUMBER_OF_PROCESSORS": "20",
+        "OneDrive": "C:\\Users\\Admin\\OneDrive",
+        "OneDriveConsumer": "C:\\Users\\Admin\\OneDrive",
+        "OS": "Windows_NT",
+        "Path": "D:\\rentalApp\\docs\\test case\\node_modules\\.bin;D:\\rentalApp\\docs\\test case\\node_modules\\.bin;D:\\rentalApp\\docs\\node_modules\\.bin;D:\\rentalApp\\node_modules\\.bin;D:\\node_modules\\.bin;D:\\node\\node-v24.13.1-win-x64\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\Users\\Admin\\.codex\\tmp\\arg0\\codex-arg0Qtae4E;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR;C:\\Program Files\\Cloudflare\\Cloudflare WARP\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\Git\\cmd;C:\\Program Files\\dotnet\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;D:\\node\\npm-global;D:\\node\\node-v24.13.1-win-x64;D:\\Python\\Scripts\\;D:\\Python\\;C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps;D:\\IntelliJ IDEA 2025.1.2\\bin;D:\\Microsoft VS Code\\bin;C:\\Program Files\\7-Zip;C:\\enterprise\\utility\\pandoc;C:\\enterprise\\utility\\usr\\bin;C:\\enterprise\\jdk1.8.0_191\\jre\\bin;C:\\enterprise\\jdk1.8.0_191\\bin;C:\\enterprise\\apache-ant-1.10.1\\bin;C:\\enterprise\\apache-maven-3.8.5\\bin;C:\\enterprise\\wildfly-18.0.1.Final\\bin;C:\\xampp;C:\\enterprise\\apache-karaf-4.3.3\\bin;C:\\Users\\Admin\\.dotnet\\tools;C:\\Users\\Admin\\AppData\\Local\\OpenAI\\Codex\\bin;C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.313.5234.0_x64__2p2nqsd0c76g0\\app\\resources",
+        "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+        "PROCESSOR_ARCHITECTURE": "AMD64",
+        "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+        "PROCESSOR_LEVEL": "6",
+        "PROCESSOR_REVISION": "9702",
+        "ProgramData": "C:\\ProgramData",
+        "ProgramFiles": "C:\\Program Files",
+        "ProgramFiles(x86)": "C:\\Program Files (x86)",
+        "ProgramW6432": "C:\\Program Files",
+        "PROMPT": "$P$G",
+        "PSModulePath": "C:\\Users\\Admin\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+        "PUBLIC": "C:\\Users\\Public",
+        "QUICKSTART_HOME": "C:\\enterprise\\quickstart-18.0.1.Final",
+        "RUST_LOG": "warn",
+        "SHELL": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "SystemDrive": "C:",
+        "SystemRoot": "C:\\WINDOWS",
+        "TEMP": "C:\\Users\\Admin\\AppData\\Local\\Temp",
+        "TMP": "C:\\Users\\Admin\\AppData\\Local\\Temp",
+        "USERDOMAIN": "PHATPT",
+        "USERDOMAIN_ROAMINGPROFILE": "PHATPT",
+        "USERNAME": "Admin",
+        "USERPROFILE": "C:\\Users\\Admin",
+        "windir": "C:\\WINDOWS",
+        "ZSH_TMUX_AUTOSTART": "false",
+        "ZSH_TMUX_AUTOSTARTED": "true",
+        "ASPNETCORE_ENVIRONMENT": "Testing",
+        "ASPNETCORE_URLS": "https://localhost:7048"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "smoke\\auth-smoke.spec.ts",
+      "file": "smoke/auth-smoke.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Smoke: auth critical path",
+          "file": "smoke/auth-smoke.spec.ts",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-AUTH-01 guest is redirected to login when opening profile",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 429,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T00:37:29.198Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e9587e99c1002d97e94d-d255b4a529410bd7d4c3",
+              "file": "smoke/auth-smoke.spec.ts",
+              "line": 10,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-02 customer can register, login, update profile, and logout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1753,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Register a new customer account",
+                          "duration": 1115
+                        },
+                        {
+                          "title": "Login with the new account",
+                          "duration": 262
+                        },
+                        {
+                          "title": "Update profile successfully",
+                          "duration": 160
+                        },
+                        {
+                          "title": "Logout to anonymous state",
+                          "duration": 73
+                        }
+                      ],
+                      "startTime": "2026-03-19T00:37:29.735Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e9587e99c1002d97e94d-a5dff80a3bedc61ff211",
+              "file": "smoke/auth-smoke.spec.ts",
+              "line": 19,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-03 admin can access admin dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 345,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T00:37:31.495Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e9587e99c1002d97e94d-14ad48f9320df6bde6fb",
+              "file": "smoke/auth-smoke.spec.ts",
+              "line": 54,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "smoke\\booking-smoke.spec.ts",
+      "file": "smoke/booking-smoke.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Smoke: booking critical path",
+          "file": "smoke/booking-smoke.spec.ts",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-BOOK-01 customer can create private hold and checkout order pending",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1492,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T00:37:31.852Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e8d362ff9a0b8a89d22d-9a5f89ac258f68de73c8",
+              "file": "smoke/booking-smoke.spec.ts",
+              "line": 10,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-03-19T00:37:23.423Z",
+    "duration": 10724.639,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

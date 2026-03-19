@@ -30,6 +30,12 @@ public sealed class AvailabilityModel(
 
     public async Task OnGetAsync()
     {
+        if (!HasExplicitFilterQuery())
+        {
+            EnsureIdempotencyKey();
+            return;
+        }
+
         await LoadAvailabilityAsync();
     }
 
@@ -105,6 +111,16 @@ public sealed class AvailabilityModel(
         {
             HoldInput.IdempotencyKey = Guid.NewGuid().ToString("N");
         }
+    }
+
+    private bool HasExplicitFilterQuery()
+    {
+        return Request.Query.ContainsKey("bookingDate")
+            || Request.Query.ContainsKey("Filter.BookingDate")
+            || Request.Query.ContainsKey("bookingMode")
+            || Request.Query.ContainsKey("Filter.BookingMode")
+            || Request.Query.ContainsKey("slotQuantity")
+            || Request.Query.ContainsKey("Filter.SlotQuantity");
     }
 
     public sealed class FilterInputModel

@@ -1,0 +1,2011 @@
+{
+  "config": {
+    "configFile": "D:\\rentalApp\\docs\\test case\\playwright.config.ts",
+    "rootDir": "D:/rentalApp/docs/test case/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/rentalApp/docs/test case/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/rentalApp/docs/test case/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "runAgents": "none",
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.58.2",
+    "workers": 1,
+    "webServer": {
+      "command": "dotnet run --project src/RentalApp.Web/RentalApp.Web.csproj --no-launch-profile",
+      "cwd": "D:\\rentalApp",
+      "url": "https://127.0.0.1:7053/healthz",
+      "ignoreHTTPSErrors": true,
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "env": {
+        "ALLUSERSPROFILE": "C:\\ProgramData",
+        "ANT_HOME": "C:\\enterprise\\apache-ant-1.10.1",
+        "APPDATA": "C:\\Users\\Admin\\AppData\\Roaming",
+        "ASPNETCORE_URLS": "https://127.0.0.1:7053",
+        "BASE_URL": "https://127.0.0.1:7053",
+        "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_12132_ZUFXXKDUDBEMTIAZ",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE": "Codex Desktop",
+        "CODEX_SHELL": "1",
+        "CODEX_THREAD_ID": "019d0033-bbd5-74c0-9379-6ce63343365f",
+        "COLOR": "0",
+        "CommonProgramFiles": "C:\\Program Files\\Common Files",
+        "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+        "CommonProgramW6432": "C:\\Program Files\\Common Files",
+        "COMPUTERNAME": "PHATPT",
+        "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+        "DISABLE_AUTO_UPDATE": "true",
+        "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+        "EDITOR": "C:\\WINDOWS\\notepad.exe",
+        "Email__Smtp__EnableSsl": "false",
+        "Email__Smtp__FromAddress": "noreply@local.test",
+        "Email__Smtp__FromDisplayName": "RentalApp Testing",
+        "Email__Smtp__Host": "127.0.0.1",
+        "Email__Smtp__Password": "mailhog",
+        "Email__Smtp__Port": "1025",
+        "Email__Smtp__Username": "mailhog",
+        "ENABLE_DOTNET_COMMAND_TESTS": "true",
+        "ENABLE_INFRA_COMMAND_TESTS": "true",
+        "ENABLE_MAILHOG_TESTS": "true",
+        "ENABLE_WORKER_RUNTIME_TESTS": "true",
+        "ENTERPRISE": "C:\\enterprise",
+        "HOME": "C:\\Users\\Admin",
+        "HOMEDRIVE": "C:",
+        "HOMEPATH": "\\Users\\Admin",
+        "INIT_CWD": "D:\\rentalApp\\docs\\test case",
+        "IntelliJ IDEA": "D:\\IntelliJ IDEA 2025.1.2\\bin;",
+        "JAVA_HOME": "C:\\enterprise\\jdk1.8.0_191",
+        "JBOSS_HOME": "C:\\enterprise\\wildfly-18.0.1.Final",
+        "JRE_HOME": "C:\\enterprise\\jdk1.8.0_191\\jre",
+        "KARAF_HOME": "C:\\enterprise\\apache-karaf-4.3.3",
+        "LOCALAPPDATA": "C:\\Users\\Admin\\AppData\\Local",
+        "LOGONSERVER": "\\\\PHATPT",
+        "M2_HOME": "C:\\enterprise\\apache-maven-3.8.5",
+        "MAILHOG_API_URL": "http://127.0.0.1:8025",
+        "MASTER_KEY": "fwfJ+Qurs9ulqkSK40MAm/u0aGWiJhulzua98kvUuog=",
+        "MAVEN_HOME": "C:\\enterprise\\apache-maven-3.8.5",
+        "NODE": "D:\\node\\node-v24.13.1-win-x64\\node.exe",
+        "NODE_EXE": "D:\\node\\node-v24.13.1-win-x64\\\\node.exe",
+        "npm_command": "exec",
+        "npm_config_cache": "D:\\node\\npm-cache",
+        "npm_config_globalconfig": "D:\\node\\npm-global\\etc\\npmrc",
+        "npm_config_global_prefix": "D:\\node\\npm-global",
+        "npm_config_init_module": "C:\\Users\\Admin\\.npm-init.js",
+        "npm_config_local_prefix": "D:\\rentalApp\\docs\\test case",
+        "npm_config_node_gyp": "D:\\node\\node-v24.13.1-win-x64\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js",
+        "npm_config_noproxy": "",
+        "npm_config_npm_version": "11.8.0",
+        "npm_config_prefix": "D:\\node\\npm-global",
+        "npm_config_userconfig": "C:\\Users\\Admin\\.npmrc",
+        "npm_config_user_agent": "npm/11.8.0 node/v24.13.1 win32 x64 workspaces/false",
+        "npm_execpath": "D:\\node\\node-v24.13.1-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "npm_lifecycle_event": "npx",
+        "npm_lifecycle_script": "playwright",
+        "npm_node_execpath": "D:\\node\\node-v24.13.1-win-x64\\node.exe",
+        "npm_package_json": "D:\\rentalApp\\docs\\test case\\package.json",
+        "npm_package_name": "rentalapp-playwright-test-cases",
+        "npm_package_version": "1.0.0",
+        "NPM_PREFIX_JS": "D:\\node\\node-v24.13.1-win-x64\\\\node_modules\\npm\\bin\\npm-prefix.js",
+        "NPM_PREFIX_NPX_CLI_JS": "D:\\node\\npm-global\\node_modules\\npm\\bin\\npx-cli.js",
+        "NPX_CLI_JS": "D:\\node\\node-v24.13.1-win-x64\\\\node_modules\\npm\\bin\\npx-cli.js",
+        "NUMBER_OF_PROCESSORS": "20",
+        "OneDrive": "C:\\Users\\Admin\\OneDrive",
+        "OneDriveConsumer": "C:\\Users\\Admin\\OneDrive",
+        "OS": "Windows_NT",
+        "Path": "D:\\rentalApp\\docs\\test case\\node_modules\\.bin;D:\\rentalApp\\docs\\test case\\node_modules\\.bin;D:\\rentalApp\\docs\\node_modules\\.bin;D:\\rentalApp\\node_modules\\.bin;D:\\node_modules\\.bin;D:\\node\\node-v24.13.1-win-x64\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\Users\\Admin\\.codex\\tmp\\arg0\\codex-arg0Qtae4E;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR;C:\\Program Files\\Cloudflare\\Cloudflare WARP\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\Git\\cmd;C:\\Program Files\\dotnet\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;D:\\node\\npm-global;D:\\node\\node-v24.13.1-win-x64;D:\\Python\\Scripts\\;D:\\Python\\;C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps;D:\\IntelliJ IDEA 2025.1.2\\bin;D:\\Microsoft VS Code\\bin;C:\\Program Files\\7-Zip;C:\\enterprise\\utility\\pandoc;C:\\enterprise\\utility\\usr\\bin;C:\\enterprise\\jdk1.8.0_191\\jre\\bin;C:\\enterprise\\jdk1.8.0_191\\bin;C:\\enterprise\\apache-ant-1.10.1\\bin;C:\\enterprise\\apache-maven-3.8.5\\bin;C:\\enterprise\\wildfly-18.0.1.Final\\bin;C:\\xampp;C:\\enterprise\\apache-karaf-4.3.3\\bin;C:\\Users\\Admin\\.dotnet\\tools;C:\\Users\\Admin\\AppData\\Local\\OpenAI\\Codex\\bin;C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.313.5234.0_x64__2p2nqsd0c76g0\\app\\resources",
+        "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+        "PROCESSOR_ARCHITECTURE": "AMD64",
+        "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+        "PROCESSOR_LEVEL": "6",
+        "PROCESSOR_REVISION": "9702",
+        "ProgramData": "C:\\ProgramData",
+        "ProgramFiles": "C:\\Program Files",
+        "ProgramFiles(x86)": "C:\\Program Files (x86)",
+        "ProgramW6432": "C:\\Program Files",
+        "PROMPT": "$P$G",
+        "PSModulePath": "C:\\Users\\Admin\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+        "PUBLIC": "C:\\Users\\Public",
+        "QUICKSTART_HOME": "C:\\enterprise\\quickstart-18.0.1.Final",
+        "RUST_LOG": "warn",
+        "SHELL": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "SystemDrive": "C:",
+        "SystemRoot": "C:\\WINDOWS",
+        "TEMP": "C:\\Users\\Admin\\AppData\\Local\\Temp",
+        "TMP": "C:\\Users\\Admin\\AppData\\Local\\Temp",
+        "USERDOMAIN": "PHATPT",
+        "USERDOMAIN_ROAMINGPROFILE": "PHATPT",
+        "USERNAME": "Admin",
+        "USERPROFILE": "C:\\Users\\Admin",
+        "windir": "C:\\WINDOWS",
+        "ZSH_TMUX_AUTOSTART": "false",
+        "ZSH_TMUX_AUTOSTARTED": "true",
+        "ASPNETCORE_ENVIRONMENT": "Testing"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "regression\\api-regression.spec.ts",
+      "file": "regression/api-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Regression: API contract and guardrail checks",
+          "file": "regression/api-regression.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-API-01 public availability API returns success payload",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1269,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:12.568Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b4454df8848441e869d-0aa199b7a66a67ac274c",
+              "file": "regression/api-regression.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "TC-API-02 public availability API rejects private slot quantity > 1",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:13.849Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b4454df8848441e869d-fcefa17dbe90adba2345",
+              "file": "regression/api-regression.spec.ts",
+              "line": 24,
+              "column": 7
+            },
+            {
+              "title": "TC-API-03 api holds rejects missing Idempotency-Key for authenticated user",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 849,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:13.866Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b4454df8848441e869d-a099ceda9590a11346a8",
+              "file": "regression/api-regression.spec.ts",
+              "line": 38,
+              "column": 7
+            },
+            {
+              "title": "TC-API-04 api checkout rejects missing Idempotency-Key for authenticated user",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 333,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:14.814Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b4454df8848441e869d-e5ca484acc9c146d7f67",
+              "file": "regression/api-regression.spec.ts",
+              "line": 66,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression\\auth-regression.spec.ts",
+      "file": "regression/auth-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Regression: auth negative and authorization flows",
+          "file": "regression/auth-regression.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-AUTH-04 duplicate register shows existing-email error",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 315,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:15.160Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "430abebda0716b29124e-1c6fd0e085ef51c9007b",
+              "file": "regression/auth-regression.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-05 invalid login shows error and stays on login page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 276,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:15.482Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "430abebda0716b29124e-c3d54d95ab4d21e124bd",
+              "file": "regression/auth-regression.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-06 external returnUrl is ignored after login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 330,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:15.766Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "430abebda0716b29124e-8c2312d6b8ba0fe018cf",
+              "file": "regression/auth-regression.spec.ts",
+              "line": 38,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-07 customer does not see admin link in navbar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 338,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:16.102Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "430abebda0716b29124e-ae45db86a9604c6381ad",
+              "file": "regression/auth-regression.spec.ts",
+              "line": 49,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-08 admin sees admin link in navbar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 325,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:16.447Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "430abebda0716b29124e-383f2b2bb4c2d151e0fb",
+              "file": "regression/auth-regression.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-09 customer cannot access admin dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 356,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:16.778Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "430abebda0716b29124e-a877155cb02cac80b63d",
+              "file": "regression/auth-regression.spec.ts",
+              "line": 69,
+              "column": 7
+            },
+            {
+              "title": "TC-PRO-01 profile email field is readonly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 365,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:17.141Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "430abebda0716b29124e-314c0d97536333674d0c",
+              "file": "regression/auth-regression.spec.ts",
+              "line": 83,
+              "column": 7
+            },
+            {
+              "title": "TC-PRO-02 profile rejects empty full name",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 414,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:17.511Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "430abebda0716b29124e-6de299a70582e912855d",
+              "file": "regression/auth-regression.spec.ts",
+              "line": 97,
+              "column": 7
+            },
+            {
+              "title": "TC-PRO-03 profile rejects overlong full name",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 433,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:17.931Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "430abebda0716b29124e-a28f0486bc2eef89d11d",
+              "file": "regression/auth-regression.spec.ts",
+              "line": 115,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression\\booking-api-regression.spec.ts",
+      "file": "regression/booking-api-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Regression: booking API idempotency and concurrency baseline",
+          "file": "regression/booking-api-regression.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-BOOK-API-01 hold API replays same idempotency key without duplicating hold",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 911,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:18.372Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4d0830e77d1d1aa3f10a-48b8b0f2a1651d420ad2",
+              "file": "regression/booking-api-regression.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-API-02 checkout API replays same idempotency key without duplicate order",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 810,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:19.289Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4d0830e77d1d1aa3f10a-10a51f26c9c238c3e58e",
+              "file": "regression/booking-api-regression.spec.ts",
+              "line": 48,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-API-03 concurrent private hold requests do not both succeed",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 901,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:20.105Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4d0830e77d1d1aa3f10a-353cf9e184d023beb111",
+              "file": "regression/booking-api-regression.spec.ts",
+              "line": 93,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-API-04 shared capacity over 8 is rejected under concurrent load",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 903,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:21.012Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4d0830e77d1d1aa3f10a-711a936f04b4413387a9",
+              "file": "regression/booking-api-regression.spec.ts",
+              "line": 145,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression\\booking-regression.spec.ts",
+      "file": "regression/booking-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Regression: booking secondary and negative flows",
+          "file": "regression/booking-regression.spec.ts",
+          "line": 16,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-BOOK-02 public visitor can load shared availability",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 568,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:21.981Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-94789193838ea389c029",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-03 availability empty state is not reachable in seeded environment",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 332,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:22.556Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-1e2840a3be9742feab1b",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-04 guest creating hold is redirected to login and returns to availability",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 801,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:22.894Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-db6f59dbc08f3bb4c9d0",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 61,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-05 hold submission without selecting court shows validation error",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 793,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:23.700Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-0a8f0a2870e8bd14620c",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 83,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-06 hold submission without selecting bucket shows validation error",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 766,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:24.499Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-e9869cc5e62d71f34dc4",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 104,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-07 direct access to fake hold id returns 404",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 333,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:25.271Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-e84858383ae58b67fd78",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 125,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-08 direct access to fake checkout hold id returns 404",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 362,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:25.609Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-15237126c863ba9eb058",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 137,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-09 customer can create shared hold with slot quantity 2",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 864,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:25.977Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-2be8711ddea5df9ba6c5",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 149,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-10 checkout remains disabled after page reload once order exists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1007,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:26.846Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-478b315684963824158d",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 174,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOK-11 shared booking supports boundary slot quantities 1 and 8",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1166,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:27.859Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3c09269a263585ccd9c-fcb5d22ef244be70b9bd",
+              "file": "regression/booking-regression.spec.ts",
+              "line": 206,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression\\email-worker-regression.spec.ts",
+      "file": "regression/email-worker-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Regression: email reset and worker expiry runtime",
+          "file": "regression/email-worker-regression.spec.ts",
+          "line": 16,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-EMAIL-01 forgot password shows generic success message",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 358,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:29.034Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "292ded18834541a679e8-38b899cb034e54115a7a",
+              "file": "regression/email-worker-regression.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "TC-EMAIL-02 reset password rejects invalid or expired link",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 189,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:29.398Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "292ded18834541a679e8-a59e1cbfa6ebb1284916",
+              "file": "regression/email-worker-regression.spec.ts",
+              "line": 29,
+              "column": 7
+            },
+            {
+              "title": "TC-EMAIL-03 forgot/reset password full flow via MailHog API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 704,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:29.592Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "292ded18834541a679e8-545b48dd7481ae1f35e9",
+              "file": "regression/email-worker-regression.spec.ts",
+              "line": 34,
+              "column": 7
+            },
+            {
+              "title": "TC-WORKER-01 expired hold is released by worker runtime",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6086,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:30.302Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "292ded18834541a679e8-4725485cd6df3602ff83",
+              "file": "regression/email-worker-regression.spec.ts",
+              "line": 98,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression\\foundation-regression.spec.ts",
+      "file": "regression/foundation-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Regression: foundation, DevOps, and encrypted-config baseline",
+          "file": "regression/foundation-regression.spec.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-FOUND-01 repository contains expected sprint-1 solution structure",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:36.399Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "afbf42cd7443573598a6-099e39ed2542e8e5a6cf",
+              "file": "regression/foundation-regression.spec.ts",
+              "line": 15,
+              "column": 7
+            },
+            {
+              "title": "TC-FOUND-02 CI workflow contains restore, build, test, and docker steps",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:36.411Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "afbf42cd7443573598a6-2989144968f82c07125f",
+              "file": "regression/foundation-regression.spec.ts",
+              "line": 33,
+              "column": 7
+            },
+            {
+              "title": "TC-FOUND-03 docker artifacts for web, worker, and compose exist",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:36.423Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "afbf42cd7443573598a6-0b1fed28e453d599ac49",
+              "file": "regression/foundation-regression.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "TC-FOUND-04 docker compose config resolves successfully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 146,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:36.436Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "afbf42cd7443573598a6-496875b42d5117d5971a",
+              "file": "regression/foundation-regression.spec.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "TC-FOUND-05 encrypted secret helper emits enc:: payload",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 660,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:36.589Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "afbf42cd7443573598a6-1f22890876ff77205ed6",
+              "file": "regression/foundation-regression.spec.ts",
+              "line": 63,
+              "column": 7
+            },
+            {
+              "title": "TC-FOUND-06 dotnet tool restore, build, and test can be invoked from repo root",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8162,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:37.255Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "afbf42cd7443573598a6-d39e4a602e90d9e4e714",
+              "file": "regression/foundation-regression.spec.ts",
+              "line": 77,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression\\platform-contract-regression.spec.ts",
+      "file": "regression/platform-contract-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Regression: explicit platform contracts for bootstrap, retry, and SMTP",
+          "file": "regression/platform-contract-regression.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-BOOT-01 database bootstrap helper script creates DB and runs EF migration update",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.427Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d9e33a9558557e071d9-36f5f3d219527c83da94",
+              "file": "regression/platform-contract-regression.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "TC-BOOT-02 design-time DbContext factory loads appsettings and decrypts env-based secrets",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.437Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d9e33a9558557e071d9-a1811839b837cad351a3",
+              "file": "regression/platform-contract-regression.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "TC-MIG-01 sprint 1 and sprint 2 migration artifacts exist explicitly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.449Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d9e33a9558557e071d9-2929e1874e4261d3b78e",
+              "file": "regression/platform-contract-regression.spec.ts",
+              "line": 29,
+              "column": 7
+            },
+            {
+              "title": "TC-RETRY-01 deadlock retry executor limits attempts to three",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.461Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d9e33a9558557e071d9-f9cdabebef0c8984342f",
+              "file": "regression/platform-contract-regression.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "TC-RETRY-02 deadlock retry executor targets MySQL 1205/1213 with jittered delay",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.469Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d9e33a9558557e071d9-68a85a32519cceb453fa",
+              "file": "regression/platform-contract-regression.spec.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "TC-SMTP-01 base appsettings exposes full SMTP config contract",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.475Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d9e33a9558557e071d9-5dd24531cc8ec1879067",
+              "file": "regression/platform-contract-regression.spec.ts",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "TC-SMTP-02 development SMTP secrets are encrypted in environment-specific config",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.486Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d9e33a9558557e071d9-d35d68e8f6e06141c35a",
+              "file": "regression/platform-contract-regression.spec.ts",
+              "line": 72,
+              "column": 7
+            },
+            {
+              "title": "TC-SMTP-03 password reset email template contains subject, expiry, CTA, and fallback URL",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.492Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d9e33a9558557e071d9-a09b62d1a0014b9d3e4c",
+              "file": "regression/platform-contract-regression.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "TC-SMTP-04 local SMTP delivery and verification strategy is documented",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.504Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d9e33a9558557e071d9-ece79f118187e98e112e",
+              "file": "regression/platform-contract-regression.spec.ts",
+              "line": 89,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression\\security-regression.spec.ts",
+      "file": "regression/security-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Regression: security baseline and mobile behavior",
+          "file": "regression/security-regression.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-SEC-01 home page returns security headers",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.518Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "781f3751694a28a706b9-9441aea296444f76ce5c",
+              "file": "regression/security-regression.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "TC-SEC-02 auth cookie uses secure and httpOnly flags after login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 342,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.528Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "781f3751694a28a706b9-843dfcdfcdd488280d12",
+              "file": "regression/security-regression.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "TC-SEC-03 posting to profile without antiforgery token is rejected",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 327,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:45.877Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "781f3751694a28a706b9-b175a0b985344771f2e2",
+              "file": "regression/security-regression.spec.ts",
+              "line": 32,
+              "column": 7
+            },
+            {
+              "title": "TC-MOB-01 availability page works on mobile viewport",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 401,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-19T01:08:46.210Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "781f3751694a28a706b9-88fb56ccb93c098c3b44",
+              "file": "regression/security-regression.spec.ts",
+              "line": 48,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-03-19T01:08:08.471Z",
+    "duration": 38680.853,
+    "expected": 50,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

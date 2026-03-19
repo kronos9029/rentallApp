@@ -1,0 +1,61 @@
+{
+  "smoke": {
+    "stats": {
+      "startTime": "2026-03-19T00:06:26.762Z",
+      "duration": 11827.270999999999,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "file": "smoke/auth-smoke.spec.ts",
+        "title": "smoke\\auth-smoke.spec.ts > TC-AUTH-01 guest is redirected to login when opening profile",
+        "status": "passed",
+        "errors": [],
+        "errorLocation": null,
+        "duration": 437,
+        "retries": 0
+      },
+      {
+        "file": "smoke/auth-smoke.spec.ts",
+        "title": "smoke\\auth-smoke.spec.ts > TC-AUTH-02 customer can register, login, update profile, and logout",
+        "status": "passed",
+        "errors": [],
+        "errorLocation": null,
+        "duration": 1713,
+        "retries": 0
+      },
+      {
+        "file": "smoke/auth-smoke.spec.ts",
+        "title": "smoke\\auth-smoke.spec.ts > TC-AUTH-03 admin can access admin dashboard",
+        "status": "passed",
+        "errors": [],
+        "errorLocation": null,
+        "duration": 328,
+        "retries": 0
+      },
+      {
+        "file": "smoke/booking-smoke.spec.ts",
+        "title": "smoke\\booking-smoke.spec.ts > TC-BOOK-01 customer can create private hold and checkout order pending",
+        "status": "passed",
+        "errors": [],
+        "errorLocation": null,
+        "duration": 1490,
+        "retries": 0
+      }
+    ]
+  },
+  "regression": {
+    "stats": {
+      "startTime": "2026-03-19T00:06:26.728Z",
+      "duration": 5646.461,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": []
+  }
+}

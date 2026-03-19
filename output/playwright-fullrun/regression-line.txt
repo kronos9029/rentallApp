@@ -1,0 +1,872 @@
+
+Running 50 tests using 1 worker
+
+[1A[2K[1/50] tests\regression\api-regression.spec.ts:7:7 › Regression: API contract and guardrail checks › TC-API-01 public availability API returns success payload
+[1A[2K[2/50] tests\regression\api-regression.spec.ts:24:7 › Regression: API contract and guardrail checks › TC-API-02 public availability API rejects private slot quantity > 1
+[1A[2K[3/50] tests\regression\api-regression.spec.ts:38:7 › Regression: API contract and guardrail checks › TC-API-03 api holds rejects missing Idempotency-Key for authenticated user
+[1A[2K[4/50] tests\regression\api-regression.spec.ts:66:7 › Regression: API contract and guardrail checks › TC-API-04 api checkout rejects missing Idempotency-Key for authenticated user
+[1A[2K[5/50] tests\regression\auth-regression.spec.ts:11:7 › Regression: auth negative and authorization flows › TC-AUTH-04 duplicate register shows existing-email error
+[1A[2K[6/50] tests\regression\auth-regression.spec.ts:25:7 › Regression: auth negative and authorization flows › TC-AUTH-05 invalid login shows error and stays on login page
+[1A[2K[7/50] tests\regression\auth-regression.spec.ts:38:7 › Regression: auth negative and authorization flows › TC-AUTH-06 external returnUrl is ignored after login
+[1A[2K  1) tests\regression\auth-regression.spec.ts:38:7 › Regression: auth negative and authorization flows › TC-AUTH-06 external returnUrl is ignored after login 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\auth-regression.spec.ts:45:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-1b423-nUrl-is-ignored-after-login\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-1b423-nUrl-is-ignored-after-login\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-auth-regression-1b423-nUrl-is-ignored-after-login\error-context.md
+
+
+[1A[2K[8/50] tests\regression\auth-regression.spec.ts:49:7 › Regression: auth negative and authorization flows › TC-AUTH-07 customer does not see admin link in navbar
+[1A[2K  2) tests\regression\auth-regression.spec.ts:49:7 › Regression: auth negative and authorization flows › TC-AUTH-07 customer does not see admin link in navbar 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\auth-regression.spec.ts:55:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-87c19-ot-see-admin-link-in-navbar\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-87c19-ot-see-admin-link-in-navbar\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-auth-regression-87c19-ot-see-admin-link-in-navbar\error-context.md
+
+
+[1A[2K[9/50] tests\regression\auth-regression.spec.ts:59:7 › Regression: auth negative and authorization flows › TC-AUTH-08 admin sees admin link in navbar
+[1A[2K  3) tests\regression\auth-regression.spec.ts:59:7 › Regression: auth negative and authorization flows › TC-AUTH-08 admin sees admin link in navbar 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao admin@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao admin@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\auth-regression.spec.ts:65:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-5a12c-n-sees-admin-link-in-navbar\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-5a12c-n-sees-admin-link-in-navbar\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-auth-regression-5a12c-n-sees-admin-link-in-navbar\error-context.md
+
+
+[1A[2K[10/50] tests\regression\auth-regression.spec.ts:69:7 › Regression: auth negative and authorization flows › TC-AUTH-09 customer cannot access admin dashboard
+[1A[2K  4) tests\regression\auth-regression.spec.ts:69:7 › Regression: auth negative and authorization flows › TC-AUTH-09 customer cannot access admin dashboard 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\auth-regression.spec.ts:77:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-b6bc1-nnot-access-admin-dashboard\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-b6bc1-nnot-access-admin-dashboard\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-auth-regression-b6bc1-nnot-access-admin-dashboard\error-context.md
+
+
+[1A[2K[11/50] tests\regression\auth-regression.spec.ts:83:7 › Regression: auth negative and authorization flows › TC-PRO-01 profile email field is readonly
+[1A[2K  5) tests\regression\auth-regression.spec.ts:83:7 › Regression: auth negative and authorization flows › TC-PRO-01 profile email field is readonly 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\auth-regression.spec.ts:90:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-208f2-ile-email-field-is-readonly\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-208f2-ile-email-field-is-readonly\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-auth-regression-208f2-ile-email-field-is-readonly\error-context.md
+
+
+[1A[2K[12/50] tests\regression\auth-regression.spec.ts:97:7 › Regression: auth negative and authorization flows › TC-PRO-02 profile rejects empty full name
+[1A[2K  6) tests\regression\auth-regression.spec.ts:97:7 › Regression: auth negative and authorization flows › TC-PRO-02 profile rejects empty full name 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\auth-regression.spec.ts:104:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-13278-ile-rejects-empty-full-name\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-13278-ile-rejects-empty-full-name\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-auth-regression-13278-ile-rejects-empty-full-name\error-context.md
+
+
+[1A[2K[13/50] tests\regression\auth-regression.spec.ts:115:7 › Regression: auth negative and authorization flows › TC-PRO-03 profile rejects overlong full name
+[1A[2K  7) tests\regression\auth-regression.spec.ts:115:7 › Regression: auth negative and authorization flows › TC-PRO-03 profile rejects overlong full name 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\auth-regression.spec.ts:122:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-dbb35--rejects-overlong-full-name\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-auth-regression-dbb35--rejects-overlong-full-name\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-auth-regression-dbb35--rejects-overlong-full-name\error-context.md
+
+
+[1A[2K[14/50] tests\regression\booking-api-regression.spec.ts:7:7 › Regression: booking API idempotency and concurrency baseline › TC-BOOK-API-01 hold API replays same idempotency key without duplicating hold
+[1A[2K[15/50] tests\regression\booking-api-regression.spec.ts:48:7 › Regression: booking API idempotency and concurrency baseline › TC-BOOK-API-02 checkout API replays same idempotency key without duplicate order
+[1A[2K[16/50] tests\regression\booking-api-regression.spec.ts:93:7 › Regression: booking API idempotency and concurrency baseline › TC-BOOK-API-03 concurrent private hold requests do not both succeed
+[1A[2K[17/50] tests\regression\booking-api-regression.spec.ts:145:7 › Regression: booking API idempotency and concurrency baseline › TC-BOOK-API-04 shared capacity over 8 is rejected under concurrent load
+[1A[2K[18/50] tests\regression\booking-regression.spec.ts:10:7 › Regression: booking secondary and negative flows › TC-BOOK-02 public visitor can load shared availability
+[1A[2K[19/50] tests\regression\booking-regression.spec.ts:23:7 › Regression: booking secondary and negative flows › TC-BOOK-03 availability empty state is not reachable in seeded environment
+[1A[2K[20/50] tests\regression\booking-regression.spec.ts:31:7 › Regression: booking secondary and negative flows › TC-BOOK-04 guest creating hold is redirected to login and returns to availability
+[1A[2K  8) tests\regression\booking-regression.spec.ts:31:7 › Regression: booking secondary and negative flows › TC-BOOK-04 guest creating hold is redirected to login and returns to availability 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveURL[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/\/Auth\/Login\?ReturnUrl=/[39m
+    Received string:  [31m"https://localhost:7048/Auth/Login?returnUrl=%2FBooking%2FAvailability%3FbookingDate%3D2026-09-05%26bookingMode%3DPrivate%26slotQuantity%3D1"[39m
+    Timeout: 10000ms
+
+    Call log:
+    [2m  - Expect "toHaveURL" with timeout 10000ms[22m
+    [2m    14 × unexpected value "https://localhost:7048/Auth/Login?returnUrl=%2FBooking%2FAvailability%3FbookingDate%3D2026-09-05%26bookingMode%3DPrivate%26slotQuantity%3D1"[22m
+
+
+       at page-objects\LoginPage.ts:24
+
+      22 |
+      23 |   async expectRedirectedFromProtectedRoute(): Promise<void> {
+    > 24 |     await expect(this.page).toHaveURL(/\/Auth\/Login\?ReturnUrl=/);
+         |                             ^
+      25 |   }
+      26 |
+      27 |   async expectRegistrationSuccess(): Promise<void> {
+        at LoginPage.expectRedirectedFromProtectedRoute (D:\rentalApp\docs\test case\tests\page-objects\LoginPage.ts:24:29)
+        at D:\rentalApp\docs\test case\tests\regression\booking-regression.spec.ts:45:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-e31e8-and-returns-to-availability\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-e31e8-and-returns-to-availability\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-booking-regress-e31e8-and-returns-to-availability\error-context.md
+
+
+[1A[2K[21/50] tests\regression\booking-regression.spec.ts:53:7 › Regression: booking secondary and negative flows › TC-BOOK-05 hold submission without selecting court shows validation error
+[1A[2K  9) tests\regression\booking-regression.spec.ts:53:7 › Regression: booking secondary and negative flows › TC-BOOK-05 hold submission without selecting court shows validation error 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\booking-regression.spec.ts:60:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-bf546-ourt-shows-validation-error\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-bf546-ourt-shows-validation-error\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-booking-regress-bf546-ourt-shows-validation-error\error-context.md
+
+
+[1A[2K[22/50] tests\regression\booking-regression.spec.ts:74:7 › Regression: booking secondary and negative flows › TC-BOOK-06 hold submission without selecting bucket shows validation error
+[1A[2K  10) tests\regression\booking-regression.spec.ts:74:7 › Regression: booking secondary and negative flows › TC-BOOK-06 hold submission without selecting bucket shows validation error 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\booking-regression.spec.ts:81:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-38175-cket-shows-validation-error\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-38175-cket-shows-validation-error\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-booking-regress-38175-cket-shows-validation-error\error-context.md
+
+
+[1A[2K[23/50] tests\regression\booking-regression.spec.ts:95:7 › Regression: booking secondary and negative flows › TC-BOOK-07 direct access to fake hold id returns 404
+[1A[2K  11) tests\regression\booking-regression.spec.ts:95:7 › Regression: booking secondary and negative flows › TC-BOOK-07 direct access to fake hold id returns 404 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\booking-regression.spec.ts:101:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-25849-to-fake-hold-id-returns-404\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-25849-to-fake-hold-id-returns-404\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-booking-regress-25849-to-fake-hold-id-returns-404\error-context.md
+
+
+[1A[2K[24/50] tests\regression\booking-regression.spec.ts:107:7 › Regression: booking secondary and negative flows › TC-BOOK-08 direct access to fake checkout hold id returns 404
+[1A[2K  12) tests\regression\booking-regression.spec.ts:107:7 › Regression: booking secondary and negative flows › TC-BOOK-08 direct access to fake checkout hold id returns 404 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\booking-regression.spec.ts:113:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-29d4c-heckout-hold-id-returns-404\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-29d4c-heckout-hold-id-returns-404\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-booking-regress-29d4c-heckout-hold-id-returns-404\error-context.md
+
+
+[1A[2K[25/50] tests\regression\booking-regression.spec.ts:119:7 › Regression: booking secondary and negative flows › TC-BOOK-09 customer can create shared hold with slot quantity 2
+[1A[2K  13) tests\regression\booking-regression.spec.ts:119:7 › Regression: booking secondary and negative flows › TC-BOOK-09 customer can create shared hold with slot quantity 2 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\booking-regression.spec.ts:127:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-6a577-d-hold-with-slot-quantity-2\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-6a577-d-hold-with-slot-quantity-2\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-booking-regress-6a577-d-hold-with-slot-quantity-2\error-context.md
+
+
+[1A[2K[26/50] tests\regression\booking-regression.spec.ts:144:7 › Regression: booking secondary and negative flows › TC-BOOK-10 checkout remains disabled after page reload once order exists
+[1A[2K  14) tests\regression\booking-regression.spec.ts:144:7 › Regression: booking secondary and negative flows › TC-BOOK-10 checkout remains disabled after page reload once order exists 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\booking-regression.spec.ts:153:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-ffca0-ge-reload-once-order-exists\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-ffca0-ge-reload-once-order-exists\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-booking-regress-ffca0-ge-reload-once-order-exists\error-context.md
+
+
+[1A[2K[27/50] tests\regression\booking-regression.spec.ts:176:7 › Regression: booking secondary and negative flows › TC-BOOK-11 shared booking supports boundary slot quantities 1 and 8
+[1A[2K  15) tests\regression\booking-regression.spec.ts:176:7 › Regression: booking secondary and negative flows › TC-BOOK-11 shared booking supports boundary slot quantities 1 and 8 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Xin chao customer@local.test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Xin chao customer@local.test')[22m
+
+
+       at page-objects\AppShell.ts:7
+
+       5 |
+       6 |   async expectSignedInAs(displayName: string): Promise<void> {
+    >  7 |     await expect(this.page.getByText(`Xin chao ${displayName}`)).toBeVisible();
+         |                                                                  ^
+       8 |   }
+       9 |
+      10 |   async expectAdminLinkHidden(): Promise<void> {
+        at AppShell.expectSignedInAs (D:\rentalApp\docs\test case\tests\page-objects\AppShell.ts:7:66)
+        at D:\rentalApp\docs\test case\tests\regression\booking-regression.spec.ts:184:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-d1f42-ary-slot-quantities-1-and-8\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-booking-regress-d1f42-ary-slot-quantities-1-and-8\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-booking-regress-d1f42-ary-slot-quantities-1-and-8\error-context.md
+
+
+[1A[2K[28/50] tests\regression\email-worker-regression.spec.ts:16:7 › Regression: email reset and worker expiry runtime › TC-EMAIL-01 forgot password shows generic success message
+[1A[2K  16) tests\regression\email-worker-regression.spec.ts:16:7 › Regression: email reset and worker expiry runtime › TC-EMAIL-01 forgot password shows generic success message 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Neu email ton tai, he thong da gui huong dan reset qua email.')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Neu email ton tai, he thong da gui huong dan reset qua email.')[22m
+
+
+      19 |     await page.getByRole('button', { name: 'Gui yeu cau reset' }).click();
+      20 |
+    > 21 |     await expect(page.getByText('Neu email ton tai, he thong da gui huong dan reset qua email.')).toBeVisible();
+         |                                                                                                   ^
+      22 |   });
+      23 |
+      24 |   test('TC-EMAIL-02 reset password rejects invalid or expired link', async ({ page }) => {
+        at D:\rentalApp\docs\test case\tests\regression\email-worker-regression.spec.ts:21:99
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\regression-email-worker-re-b4a26-ows-generic-success-message\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\regression-email-worker-re-b4a26-ows-generic-success-message\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\regression-email-worker-re-b4a26-ows-generic-success-message\error-context.md
+
+
+[1A[2K[29/50] tests\regression\email-worker-regression.spec.ts:24:7 › Regression: email reset and worker expiry runtime › TC-EMAIL-02 reset password rejects invalid or expired link
+[1A[2K[30/50] tests\regression\email-worker-regression.spec.ts:29:7 › Regression: email reset and worker expiry runtime › TC-EMAIL-03 forgot/reset password full flow via MailHog API
+[1A[2K[31/50] tests\regression\email-worker-regression.spec.ts:79:7 › Regression: email reset and worker expiry runtime › TC-WORKER-01 expired hold is released by worker runtime
+[1A[2K[32/50] tests\regression\foundation-regression.spec.ts:8:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-01 repository contains expected sprint-1 solution structure
+[1A[2K  17) tests\regression\foundation-regression.spec.ts:8:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-01 repository contains expected sprint-1 solution structure 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      20 |       '.github/workflows',
+      21 |     ]) {
+    > 22 |       expect(fs.existsSync(path.join(root, relativePath))).toBeTruthy();
+         |                                                            ^
+      23 |     }
+      24 |   });
+      25 |
+        at D:\rentalApp\docs\test case\tests\regression\foundation-regression.spec.ts:22:60
+
+
+[1A[2K[33/50] tests\regression\foundation-regression.spec.ts:26:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-02 CI workflow contains restore, build, test, and docker steps
+[1A[2K  18) tests\regression\foundation-regression.spec.ts:26:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-02 CI workflow contains restore, build, test, and docker steps 
+
+    Error: ENOENT: no such file or directory, open 'D:\rentalApp\docs\.github\workflows\ci.yml'
+
+      25 |
+      26 |   test('TC-FOUND-02 CI workflow contains restore, build, test, and docker steps', async () => {
+    > 27 |     const workflow = fs.readFileSync(path.join(repoRoot(), '.github/workflows/ci.yml'), 'utf8');
+         |                         ^
+      28 |
+      29 |     expect(workflow).toContain('dotnet restore RentalApp.slnx');
+      30 |     expect(workflow).toContain('dotnet build RentalApp.slnx --no-restore --configuration Release');
+        at D:\rentalApp\docs\test case\tests\regression\foundation-regression.spec.ts:27:25
+
+
+[1A[2K[34/50] tests\regression\foundation-regression.spec.ts:36:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-03 docker artifacts for web, worker, and compose exist
+[1A[2K  19) tests\regression\foundation-regression.spec.ts:36:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-03 docker artifacts for web, worker, and compose exist 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      37 |     const root = repoRoot();
+      38 |
+    > 39 |     expect(fs.existsSync(path.join(root, 'docker-compose.yml'))).toBeTruthy();
+         |                                                                  ^
+      40 |     expect(fs.existsSync(path.join(root, 'build/docker/web.Dockerfile'))).toBeTruthy();
+      41 |     expect(fs.existsSync(path.join(root, 'build/docker/worker.Dockerfile'))).toBeTruthy();
+      42 |   });
+        at D:\rentalApp\docs\test case\tests\regression\foundation-regression.spec.ts:39:66
+
+
+[1A[2K[35/50] tests\regression\foundation-regression.spec.ts:44:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-04 docker compose config resolves successfully
+[1A[2K[36/50] tests\regression\foundation-regression.spec.ts:56:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-05 encrypted secret helper emits enc:: payload
+[1A[2K  20) tests\regression\foundation-regression.spec.ts:56:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-05 encrypted secret helper emits enc:: payload 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m1[39m
+
+      64 |     );
+      65 |
+    > 66 |     expect(result.exitCode).toBe(0);
+         |                             ^
+      67 |     expect(result.stdout).toContain('enc::');
+      68 |   });
+      69 |
+        at D:\rentalApp\docs\test case\tests\regression\foundation-regression.spec.ts:66:29
+
+
+[1A[2K[37/50] tests\regression\foundation-regression.spec.ts:70:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-06 dotnet tool restore, build, and test can be invoked from repo root
+[1A[2K[38/50] tests\regression\platform-contract-regression.spec.ts:11:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-BOOT-01 database bootstrap helper script creates DB and runs EF migration update
+[1A[2K  21) tests\regression\platform-contract-regression.spec.ts:11:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-BOOT-01 database bootstrap helper script creates DB and runs EF migration update 
+
+    Error: ENOENT: no such file or directory, open 'D:\rentalApp\docs\build\scripts\Initialize-Database.ps1'
+
+       5 |
+       6 | function read(relativePath: string): string {
+    >  7 |   return fs.readFileSync(path.join(repoRoot(), relativePath), 'utf8');
+         |             ^
+       8 | }
+       9 |
+      10 | test.describe('Regression: explicit platform contracts for bootstrap, retry, and SMTP', () => {
+        at read (D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:7:13)
+        at D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:12:20
+
+
+[1A[2K[39/50] tests\regression\platform-contract-regression.spec.ts:20:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-BOOT-02 design-time DbContext factory loads appsettings and decrypts env-based secrets
+[1A[2K  22) tests\regression\platform-contract-regression.spec.ts:20:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-BOOT-02 design-time DbContext factory loads appsettings and decrypts env-based secrets 
+
+    Error: ENOENT: no such file or directory, open 'D:\rentalApp\docs\src\RentalApp.Infrastructure\Persistence\DesignTimeDbContextFactory.cs'
+
+       5 |
+       6 | function read(relativePath: string): string {
+    >  7 |   return fs.readFileSync(path.join(repoRoot(), relativePath), 'utf8');
+         |             ^
+       8 | }
+       9 |
+      10 | test.describe('Regression: explicit platform contracts for bootstrap, retry, and SMTP', () => {
+        at read (D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:7:13)
+        at D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:21:21
+
+
+[1A[2K[40/50] tests\regression\platform-contract-regression.spec.ts:29:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-MIG-01 sprint 1 and sprint 2 migration artifacts exist explicitly
+[1A[2K  23) tests\regression\platform-contract-regression.spec.ts:29:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-MIG-01 sprint 1 and sprint 2 migration artifacts exist explicitly 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      37 |
+      38 |     for (const relativePath of expectedFiles) {
+    > 39 |       expect(fs.existsSync(path.join(root, relativePath))).toBeTruthy();
+         |                                                            ^
+      40 |     }
+      41 |   });
+      42 |
+        at D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:39:60
+
+
+[1A[2K[41/50] tests\regression\platform-contract-regression.spec.ts:43:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-RETRY-01 deadlock retry executor limits attempts to three
+[1A[2K  24) tests\regression\platform-contract-regression.spec.ts:43:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-RETRY-01 deadlock retry executor limits attempts to three 
+
+    Error: ENOENT: no such file or directory, open 'D:\rentalApp\docs\src\RentalApp.Infrastructure\Booking\DeadlockRetryExecutor.cs'
+
+       5 |
+       6 | function read(relativePath: string): string {
+    >  7 |   return fs.readFileSync(path.join(repoRoot(), relativePath), 'utf8');
+         |             ^
+       8 | }
+       9 |
+      10 | test.describe('Regression: explicit platform contracts for bootstrap, retry, and SMTP', () => {
+        at read (D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:7:13)
+        at D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:44:27
+
+
+[1A[2K[42/50] tests\regression\platform-contract-regression.spec.ts:50:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-RETRY-02 deadlock retry executor targets MySQL 1205/1213 with jittered delay
+[1A[2K  25) tests\regression\platform-contract-regression.spec.ts:50:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-RETRY-02 deadlock retry executor targets MySQL 1205/1213 with jittered delay 
+
+    Error: ENOENT: no such file or directory, open 'D:\rentalApp\docs\src\RentalApp.Infrastructure\Booking\DeadlockRetryExecutor.cs'
+
+       5 |
+       6 | function read(relativePath: string): string {
+    >  7 |   return fs.readFileSync(path.join(repoRoot(), relativePath), 'utf8');
+         |             ^
+       8 | }
+       9 |
+      10 | test.describe('Regression: explicit platform contracts for bootstrap, retry, and SMTP', () => {
+        at read (D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:7:13)
+        at D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:51:27
+
+
+[1A[2K[43/50] tests\regression\platform-contract-regression.spec.ts:58:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-01 base appsettings exposes full SMTP config contract
+[1A[2K  26) tests\regression\platform-contract-regression.spec.ts:58:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-01 base appsettings exposes full SMTP config contract 
+
+    Error: ENOENT: no such file or directory, open 'D:\rentalApp\docs\src\RentalApp.Web\appsettings.json'
+
+       5 |
+       6 | function read(relativePath: string): string {
+    >  7 |   return fs.readFileSync(path.join(repoRoot(), relativePath), 'utf8');
+         |             ^
+       8 | }
+       9 |
+      10 | test.describe('Regression: explicit platform contracts for bootstrap, retry, and SMTP', () => {
+        at read (D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:7:13)
+        at D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:59:25
+
+
+[1A[2K[44/50] tests\regression\platform-contract-regression.spec.ts:72:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-02 development SMTP secrets are encrypted in environment-specific config
+[1A[2K  27) tests\regression\platform-contract-regression.spec.ts:72:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-02 development SMTP secrets are encrypted in environment-specific config 
+
+    Error: ENOENT: no such file or directory, open 'D:\rentalApp\docs\src\RentalApp.Web\appsettings.Development.json'
+
+       5 |
+       6 | function read(relativePath: string): string {
+    >  7 |   return fs.readFileSync(path.join(repoRoot(), relativePath), 'utf8');
+         |             ^
+       8 | }
+       9 |
+      10 | test.describe('Regression: explicit platform contracts for bootstrap, retry, and SMTP', () => {
+        at read (D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:7:13)
+        at D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:73:31
+
+
+[1A[2K[45/50] tests\regression\platform-contract-regression.spec.ts:80:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-03 password reset email template contains subject, expiry, CTA, and fallback URL
+[1A[2K  28) tests\regression\platform-contract-regression.spec.ts:80:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-03 password reset email template contains subject, expiry, CTA, and fallback URL 
+
+    Error: ENOENT: no such file or directory, open 'D:\rentalApp\docs\src\RentalApp.Infrastructure\Communication\Email\PasswordResetEmailTemplate.cs'
+
+       5 |
+       6 | function read(relativePath: string): string {
+    >  7 |   return fs.readFileSync(path.join(repoRoot(), relativePath), 'utf8');
+         |             ^
+       8 | }
+       9 |
+      10 | test.describe('Regression: explicit platform contracts for bootstrap, retry, and SMTP', () => {
+        at read (D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:7:13)
+        at D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:81:22
+
+
+[1A[2K[46/50] tests\regression\platform-contract-regression.spec.ts:89:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-04 local SMTP delivery and verification strategy is documented
+[1A[2K  29) tests\regression\platform-contract-regression.spec.ts:89:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-04 local SMTP delivery and verification strategy is documented 
+
+    Error: ENOENT: no such file or directory, open 'D:\rentalApp\docs\README.md'
+
+       5 |
+       6 | function read(relativePath: string): string {
+    >  7 |   return fs.readFileSync(path.join(repoRoot(), relativePath), 'utf8');
+         |             ^
+       8 | }
+       9 |
+      10 | test.describe('Regression: explicit platform contracts for bootstrap, retry, and SMTP', () => {
+        at read (D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:7:13)
+        at D:\rentalApp\docs\test case\tests\regression\platform-contract-regression.spec.ts:90:20
+
+
+[1A[2K[47/50] tests\regression\security-regression.spec.ts:7:7 › Regression: security baseline and mobile behavior › TC-SEC-01 home page returns security headers
+[1A[2K[48/50] tests\regression\security-regression.spec.ts:18:7 › Regression: security baseline and mobile behavior › TC-SEC-02 auth cookie uses secure and httpOnly flags after login
+[1A[2K[49/50] tests\regression\security-regression.spec.ts:32:7 › Regression: security baseline and mobile behavior › TC-SEC-03 posting to profile without antiforgery token is rejected
+[1A[2K[50/50] tests\regression\security-regression.spec.ts:48:7 › Regression: security baseline and mobile behavior › TC-MOB-01 availability page works on mobile viewport
+[1A[2K  29 failed
+    tests\regression\auth-regression.spec.ts:38:7 › Regression: auth negative and authorization flows › TC-AUTH-06 external returnUrl is ignored after login 
+    tests\regression\auth-regression.spec.ts:49:7 › Regression: auth negative and authorization flows › TC-AUTH-07 customer does not see admin link in navbar 
+    tests\regression\auth-regression.spec.ts:59:7 › Regression: auth negative and authorization flows › TC-AUTH-08 admin sees admin link in navbar 
+    tests\regression\auth-regression.spec.ts:69:7 › Regression: auth negative and authorization flows › TC-AUTH-09 customer cannot access admin dashboard 
+    tests\regression\auth-regression.spec.ts:83:7 › Regression: auth negative and authorization flows › TC-PRO-01 profile email field is readonly 
+    tests\regression\auth-regression.spec.ts:97:7 › Regression: auth negative and authorization flows › TC-PRO-02 profile rejects empty full name 
+    tests\regression\auth-regression.spec.ts:115:7 › Regression: auth negative and authorization flows › TC-PRO-03 profile rejects overlong full name 
+    tests\regression\booking-regression.spec.ts:31:7 › Regression: booking secondary and negative flows › TC-BOOK-04 guest creating hold is redirected to login and returns to availability 
+    tests\regression\booking-regression.spec.ts:53:7 › Regression: booking secondary and negative flows › TC-BOOK-05 hold submission without selecting court shows validation error 
+    tests\regression\booking-regression.spec.ts:74:7 › Regression: booking secondary and negative flows › TC-BOOK-06 hold submission without selecting bucket shows validation error 
+    tests\regression\booking-regression.spec.ts:95:7 › Regression: booking secondary and negative flows › TC-BOOK-07 direct access to fake hold id returns 404 
+    tests\regression\booking-regression.spec.ts:107:7 › Regression: booking secondary and negative flows › TC-BOOK-08 direct access to fake checkout hold id returns 404 
+    tests\regression\booking-regression.spec.ts:119:7 › Regression: booking secondary and negative flows › TC-BOOK-09 customer can create shared hold with slot quantity 2 
+    tests\regression\booking-regression.spec.ts:144:7 › Regression: booking secondary and negative flows › TC-BOOK-10 checkout remains disabled after page reload once order exists 
+    tests\regression\booking-regression.spec.ts:176:7 › Regression: booking secondary and negative flows › TC-BOOK-11 shared booking supports boundary slot quantities 1 and 8 
+    tests\regression\email-worker-regression.spec.ts:16:7 › Regression: email reset and worker expiry runtime › TC-EMAIL-01 forgot password shows generic success message 
+    tests\regression\foundation-regression.spec.ts:8:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-01 repository contains expected sprint-1 solution structure 
+    tests\regression\foundation-regression.spec.ts:26:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-02 CI workflow contains restore, build, test, and docker steps 
+    tests\regression\foundation-regression.spec.ts:36:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-03 docker artifacts for web, worker, and compose exist 
+    tests\regression\foundation-regression.spec.ts:56:7 › Regression: foundation, DevOps, and encrypted-config baseline › TC-FOUND-05 encrypted secret helper emits enc:: payload 
+    tests\regression\platform-contract-regression.spec.ts:11:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-BOOT-01 database bootstrap helper script creates DB and runs EF migration update 
+    tests\regression\platform-contract-regression.spec.ts:20:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-BOOT-02 design-time DbContext factory loads appsettings and decrypts env-based secrets 
+    tests\regression\platform-contract-regression.spec.ts:29:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-MIG-01 sprint 1 and sprint 2 migration artifacts exist explicitly 
+    tests\regression\platform-contract-regression.spec.ts:43:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-RETRY-01 deadlock retry executor limits attempts to three 
+    tests\regression\platform-contract-regression.spec.ts:50:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-RETRY-02 deadlock retry executor targets MySQL 1205/1213 with jittered delay 
+    tests\regression\platform-contract-regression.spec.ts:58:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-01 base appsettings exposes full SMTP config contract 
+    tests\regression\platform-contract-regression.spec.ts:72:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-02 development SMTP secrets are encrypted in environment-specific config 
+    tests\regression\platform-contract-regression.spec.ts:80:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-03 password reset email template contains subject, expiry, CTA, and fallback URL 
+    tests\regression\platform-contract-regression.spec.ts:89:7 › Regression: explicit platform contracts for bootstrap, retry, and SMTP › TC-SMTP-04 local SMTP delivery and verification strategy is documented 
+  5 skipped
+  16 passed (3.6m)

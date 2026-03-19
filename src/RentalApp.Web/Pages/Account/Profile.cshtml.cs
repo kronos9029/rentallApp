@@ -23,13 +23,13 @@ public sealed class ProfileModel(IUserAuthService authService) : PageModel
 
     public async Task<IActionResult> OnGetAsync()
     {
-        var user = await LoadCurrentUserAsync();
+        var user = await LoadCurrentUserAsync(hydrateInput: true);
         return user is null ? RedirectToPage("/Auth/Login") : Page();
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        var currentUser = await LoadCurrentUserAsync();
+        var currentUser = await LoadCurrentUserAsync(hydrateInput: false);
         if (currentUser is null)
         {
             return RedirectToPage("/Auth/Login");
@@ -58,7 +58,7 @@ public sealed class ProfileModel(IUserAuthService authService) : PageModel
         return RedirectToPage();
     }
 
-    private async Task<AuthenticatedUser?> LoadCurrentUserAsync()
+    private async Task<AuthenticatedUser?> LoadCurrentUserAsync(bool hydrateInput)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (string.IsNullOrWhiteSpace(userId))
@@ -72,8 +72,12 @@ public sealed class ProfileModel(IUserAuthService authService) : PageModel
             return null;
         }
 
-        Input.FullName = user.FullName;
-        Input.Email = user.Email;
+        if (hydrateInput)
+        {
+            Input.FullName = user.FullName;
+            Input.Email = user.Email;
+        }
+
         Roles = user.Roles;
         return user;
     }

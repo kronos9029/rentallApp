@@ -33,7 +33,14 @@ public sealed class PricingRuleReadService(RentalAppDbContext dbContext) : IPric
             .OrderByDescending(candidate => candidate.AppliesTo == PricingAppliesTo.Any ? 0 : 1)
             .ThenByDescending(candidate => candidate.DayType == PricingDayType.Any ? 0 : 1)
             .ThenByDescending(candidate => candidate.EffectiveFrom)
-            .FirstOrDefault();
+            .FirstOrDefault()
+            ?? candidates
+                .Where(candidate => MatchesDayType(candidate, isWeekend))
+                .Where(candidate => MatchesBookingMode(candidate, request.BookingMode))
+                .OrderByDescending(candidate => candidate.AppliesTo == PricingAppliesTo.Any ? 0 : 1)
+                .ThenByDescending(candidate => candidate.DayType == PricingDayType.Any ? 0 : 1)
+                .ThenByDescending(candidate => candidate.EffectiveFrom)
+                .FirstOrDefault();
 
         if (rule is null)
         {
